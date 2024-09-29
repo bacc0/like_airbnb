@@ -18,7 +18,7 @@ export default function MyApp(props) {
   return (
     <CacheProvider value={emotionCache}>
       <Head>
-        <title>My page</title>
+        <title>ALIBMB</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <meta name="theme-color" content="#FF385C"></meta>
       </Head>
