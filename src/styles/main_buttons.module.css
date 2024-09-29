@@ -1,0 +1,35 @@
+
+
+.button_container {
+    border: 0.1px solid #999999;
+    border-radius: 50px !important;
+    background-color: #ffffff;
+}
+.button_container:hover {
+   transform: scale(1.005);
+   transition: transform 0.35s ease-in-out;
+}
+
+
+.input_aria {
+    height: 60px;
+    width: 180px;
+    border-radius:  50px 0px 0px 50px  !important;
+    border-right: 0.1px solid #999999 !important;
+    margin-left: 30px !important;
+    padding-right: 20px !important; 
+
+}
+
+.button_check_in {
+    height: 60px;
+    width: 140px;
+}
+
+.button_search {
+    height: 60px;
+    width: 140px;
+    border-radius: 0px 50px 50px 0px !important;
+    border-left: 0.1px solid #999999 !important;
+    
+}
