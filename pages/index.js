@@ -320,10 +320,10 @@ export default function Index() {
                 {!calendarIsVisible && */}
                 <motion.div
                     className={styles.custom_date_picker_container}
-                    initial={{ opacity: 0.90, translateY: 320, scale: 1.3 }} // Initial state
+                    initial={{ opacity: 0.0, translateY:520, scale: 1.3 }} // Initial state
                     animate={{ opacity: 1, translateY: 128, scale: 1.3 }} // Animate to visible state
                     exit={{ opacity: 0, translateY: -30 }} // Exit state
-                    transition={{ duration: 0.35 }} // Duration for the animation
+                    transition={{ duration: 0.7, delay: 0.8 , type: "spring", stiffness: 200  }} // Duration for the animation
 
                     style={{
                         // filter: calendarIsVisible ? 'blur(2px)' : 'blur(0px)',
