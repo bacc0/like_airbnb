@@ -293,62 +293,45 @@ export default function Index() {
                 }}
             >
 
-                {/* {calendarIsVisible &&
-                    <motion.div
-                        className={styles.custom_date_picker_container}
-                        initial={{ opacity: 1, translateY: -10, scale: 1.3 }} // Initial state
-                        animate={{ opacity: 0.62, translateY: 130, scale: 1.3 }} // Animate to visible state
-                        exit={{ opacity: 0, translateY: -30 }} // Exit state
-                        transition={{ duration: 0.35, delay: 0.0 }} // Duration for the animation
-
-                        style={{
-                            filter: 'blur(2px)',
-                            WebkitFilter: 'blur(2px)', // For Safari support
-                            transition: 'filter 3s',   // 3-second transition for Chrome
-                            WebkitTransition: '-webkit-filter 3s' // 3-second transition for Safari
-                          }}
-                        
-                    >
-                        <div>
-                            <h3>Inspiration from past experiences</h3>
-                            {cards2}
-                            {cards1}
-                        </div>
-
-                    </motion.div>
-                }
-                {!calendarIsVisible && */}
                 <motion.div
                     className={styles.custom_date_picker_container}
-                    initial={{ opacity: 0.0, translateY:520, scale: 1.3 }} // Initial state
+                    initial={{ opacity: 0.0, translateY: 520, scale: 1.3 }} // Initial state
                     animate={{ opacity: 1, translateY: 128, scale: 1.3 }} // Animate to visible state
                     exit={{ opacity: 0, translateY: -30 }} // Exit state
-                    transition={{ duration: 0.7, delay: 0.8 , type: "spring", stiffness: 200  }} // Duration for the animation
+                    transition={{ duration: 0.7, delay: 0.8, type: "spring", stiffness: 200 }} // Duration for the animation
 
                     style={{
-                        // filter: calendarIsVisible ? 'blur(2px)' : 'blur(0px)',
-                        // WebkitFilter: 'blur(2px)', // For Safari support
-
                         position: 'relative',
-                        top: calendarIsVisible ?  0 : -80,
+                        top: calendarIsVisible ? 0 : -80,
 
-                        transition: 'top 0.35s  ease',   
+                        transition: 'top 0.35s  ease',
                         WebkitTransition: 'top 0.35s', // 3-second transition for Safari
                     }}
                 >
-                    {/* <Image
-                            src="/icons.svg"
-                            width={800}
-                            height={50}
-                            alt="Picture of the logo"
-                        /> */}
                     <h3>Inspiration from past experiences</h3>
-
                     {cards2}
-                    {cards1}
 
+                    <motion.div
+                        className={styles.custom_date_picker_container}
+                        initial={{ opacity: 0.0, translateY: 320, scale: 1.5 }} // Initial state
+                        animate={{ opacity: 1, translateY: 128, scale: 1 }} // Animate to visible state
+                        exit={{ opacity: 0, translateY: -30 }} // Exit state
+                        transition={{ duration: 0.7, delay: 0.82, type: "spring", stiffness: 200 }} // Duration for the animation
+
+                        style={{
+                            position: 'relative',
+                            top: calendarIsVisible ? 0 : -80,
+
+                            transition: 'top 0.35s  ease',
+                            WebkitTransition: 'top 0.35s', // 3-second transition for Safari
+                        }}
+                    >
+                        {cards1}
+                    </motion.div>
                 </motion.div>
-                {/* } */}
+
+
+
 
 
             </div>
