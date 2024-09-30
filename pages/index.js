@@ -314,7 +314,7 @@ export default function Index() {
                     <motion.div
                         className={styles.custom_date_picker_container}
                         initial={{ opacity: 0.0, translateY: 320, scale: 1.5 }} // Initial state
-                        animate={{ opacity: 1, translateY: 128, scale: 1 }} // Animate to visible state
+                        animate={{ opacity: 1, translateY: 70, scale: 1 }} // Animate to visible state
                         exit={{ opacity: 0, translateY: -30 }} // Exit state
                         transition={{ duration: 0.7, delay: 0.82, type: "spring", stiffness: 200 }} // Duration for the animation
 
