@@ -23,8 +23,10 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+// import MenuIcon from '@mui/icons-material/Menu';
 
+
+import BorderLinearProgress from '../components/BorderLinearProgress'
 
 
 
@@ -34,7 +36,7 @@ import ModalLogin from '../components/ModalLogin'
 
 export default function Index() {
 
-   
+
 
     // State to manage both start and end dates for range selection
     const [dateRange, setDateRange] = useState([null, null]);
@@ -47,6 +49,8 @@ export default function Index() {
     const [formattedEndDate, setFormattedEndDate] = useState('');
     const [lengthOfNights, setLengthOfNights] = useState(0);
     const [calendarIsVisible, setCalendarIsVisible] = useState(false);
+    const [BorderLinearProgress_Visible, setBorderLinearProgress_Visible] = useState(true);
+
 
     // state for modal loging
     const [open, setOpen] = React.useState(false);
@@ -57,6 +61,12 @@ export default function Index() {
     const today = new Date();
     const maxDate = new Date();
     maxDate.setDate(today.getDate() + 180); // Set maximum date to 180 days from today
+
+    useEffect(() => {
+        setTimeout(() => {
+            setBorderLinearProgress_Visible(false)
+        }, 1000);
+    }, []);
 
     const handleDateChange = (dates) => {
         const [start, end] = dates;
@@ -136,6 +146,10 @@ export default function Index() {
                 minHeight: 480
             }}
         >
+
+            {BorderLinearProgress_Visible && <BorderLinearProgress />}
+
+
             <Box sx={{ flexGrow: 1 }}>
                 <AppBar style={{
                     background: '#ffffff',
