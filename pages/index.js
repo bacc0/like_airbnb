@@ -189,7 +189,7 @@ export default function Index() {
                             <div
                                 style={{
                                     fontSize: 7,
-                                    width:40,
+                                    width:isLogin ? 40 : 0,
                                     marginLeft: 6,
                                     overflow: 'hidden',         // Hide any overflowed content
                                     textOverflow: 'ellipsis',   // Show "..." if the text is too long
