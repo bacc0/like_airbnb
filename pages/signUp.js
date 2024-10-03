@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { Container, Button, FormControl, InputLabel, OutlinedInput, InputAdornment, IconButton } from "@mui/material"; 
+import { Container, Button, FormControl, InputLabel, OutlinedInput, InputAdornment, IconButton } from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useRouter } from "next/router"; // Import Next.js useRouter
 import { motion } from 'framer-motion'; // For animations
+
+
 
 const AddNewProperty = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -42,25 +44,25 @@ const AddNewProperty = () => {
                 isListing: false // Default value for a new user
             }),
         })
-        .then(response => response.json())
-        .then(data => {
-            // Once the user is created, hide the form and show the success message
-            setIsLoading(false);
-            setFormVisible(false);
-            setShowSuccessMessage(true);
+            .then(response => response.json())
+            .then(data => {
+                // Once the user is created, hide the form and show the success message
+                setIsLoading(false);
+                setFormVisible(false);
+                setShowSuccessMessage(true);
 
-            // After 4 seconds, redirect to the index page with query parameter
-            setTimeout(() => {
-                router.push({
-                    pathname: "/",
-                    query: { showLogin: true } // Pass query parameter to show the modal on the index page
-                });
-            }, 2000);
-        })
-        .catch(error => {
-            console.error('Error creating user:', error);
-            setIsLoading(false);
-        });
+                // After 4 seconds, redirect to the index page with query parameter
+                setTimeout(() => {
+                    router.push({
+                        pathname: "/",
+                        query: { showLogin: true } // Pass query parameter to show the modal on the index page
+                    });
+                }, 2000);
+            })
+            .catch(error => {
+                console.error('Error creating user:', error);
+                setIsLoading(false);
+            });
     };
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -74,14 +76,25 @@ const AddNewProperty = () => {
         <Container maxWidth="sm" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
             {formVisible ? (
                 <motion.div
-                    initial={{ opacity: 1, y: 0 }} // Start fully visible
-                    animate={{ opacity: formVisible ? 1 : 0, y: formVisible ? 0 : -50 }} // Animate out when form is not visible
-                    transition={{ duration: 0.3 }}
+                    initial={{
+                        opacity: 0.5,
+                        translateY: -30,
+                        translateX: 0,
+                        scale: 1.3
+                    }} // Initial state
+                    animate={{
+                        opacity: 1,
+                        translateY: 0,
+                        translateX: 0,
+                        scale: 1
+                    }} // Animate to visible state
+                    transition={{ duration: 0.35, delay: 0, type: "spring", stiffness: 200 }}
+
                 >
                     <h1 style={{ textAlign: 'center' }}>Create New User</h1>
 
                     <FormControl fullWidth variant="outlined" sx={{ my: 2 }}>
-                        <InputLabel htmlFor="outlined-adornment-username">Username</InputLabel>
+                        <InputLabel htmlFor="outlined-adornment-username">Name</InputLabel>
                         <OutlinedInput
                             id="outlined-adornment-username"
                             name="username"
