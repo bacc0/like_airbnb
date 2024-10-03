@@ -55,7 +55,7 @@ const AddNewProperty = () => {
                 // After 4 seconds, redirect to the index page with query parameter
                 setTimeout(() => {
                     router.push({
-                        pathname: "/home",
+                        pathname: "/",
                         query: { showLogin: true } // Pass query parameter to show the modal on the index page
                     });
                 }, 2000);

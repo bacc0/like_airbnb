@@ -35,7 +35,7 @@ import ModalLogin from '../components/ModalLogin'
 export default function Index() {
 
 
-
+    const [isLogin, setIsLogin] = React.useState(false);
     // State to manage both start and end dates for range selection
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
@@ -48,10 +48,19 @@ export default function Index() {
     const [lengthOfNights, setLengthOfNights] = useState(0);
     const [calendarIsVisible, setCalendarIsVisible] = useState(false);
 
+
+    useEffect(() => {
+
+        if (isLogin) {
+            handleClose()
+        }
+    }, [isLogin]);
+
     // state for modal loging
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const handleLogOut = () => setIsLogin(false);
 
     // Get today's date and calculate the date 180 days from today
     const today = new Date();
@@ -225,12 +234,13 @@ export default function Index() {
 
                         {/* <Link href="login/" passHref> */}
                         <Button
-                            onClick={handleOpen}
+                            onClick={isLogin ?handleLogOut : handleOpen}
+
                             className={styles.button_account}
                             style={{ marginLeft: 20 }}
                             variant="outlined" startIcon={<PersonIcon />}
                         >
-                            My Account
+                            {isLogin ? 'Log Out': 'My Account'}
                         </Button>
                         {/* </Link> */}
                     </motion.div>
@@ -245,6 +255,9 @@ export default function Index() {
             < ModalLogin
                 handleClose={handleClose}
                 open={open}
+
+                isLogin={isLogin}
+                setIsLogin={setIsLogin}
             />
 
 

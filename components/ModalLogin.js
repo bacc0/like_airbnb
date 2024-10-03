@@ -20,11 +20,12 @@ const style = {
     p: 4,
 };
 
-export default function BasicModal({ handleClose, open }) {
+export default function BasicModal({
+    handleClose, open, isLogin, setIsLogin, setName, name }) {
     // const [open, setOpen] = React.useState(false);
     // const handleOpen = () => setOpen(true);
     // const handleClose = () => setOpen(false);
-  
+
 
     return (
         <div>
@@ -36,7 +37,15 @@ export default function BasicModal({ handleClose, open }) {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style} >
-                    <Login />
+                    <Login
+                        isLogin={isLogin}
+                        setIsLogin={setIsLogin}
+                        handleClose={handleClose}
+                        open={open}
+                        name={name}
+                        setName={setName}
+                    />
+                    <h1>{isLogin ? 'yes' : 'no'}</h1>
                 </Box>
             </Modal>
         </div>
