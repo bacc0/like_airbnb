@@ -55,7 +55,7 @@ const AddNewProperty = () => {
                 // After 4 seconds, redirect to the index page with query parameter
                 setTimeout(() => {
                     router.push({
-                        pathname: "/",
+                        pathname: "/home",
                         query: { showLogin: true } // Pass query parameter to show the modal on the index page
                     });
                 }, 2000);
@@ -168,7 +168,7 @@ const AddNewProperty = () => {
             ) : (
                 showSuccessMessage && (
                     <motion.div initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
-                        <h2>User created successfully!</h2>
+                        <h2 style={{ fontWeight: 400, color: '#FF385C'}}>User created successfully!</h2>
                     </motion.div>
                 )
             )}
