@@ -170,26 +170,42 @@ export default function Index() {
                         initial={{ opacity: 0, translateY: 0, scale: 3 }}
                         animate={{ opacity: 1, translateY: 0, scale: 1 }}
                         transition={{ duration: 0.35, delay: 0.7, type: "spring", stiffness: 200 }}
-                        style={{ position: "absolute", top: 57, right: 45 }}
+                        style={{ 
+                            position: "absolute", 
+                            top: 46, 
+                            right: 45, 
+                            display: 'flex', 
+                            alignItems: 'center' ,
+                            boxShadow: '0 0 10px #bdbdbd',
+                            borderRadius: 36
+                        }}
                     >
-                        <Image
-                            src="/rentout.svg"
-                            width={80}
-                            height={36}
-                            alt="Rent out button"
-                        />
+                        <div
+                            className={styles.button_list_item}
+                            style={{
+                                // position: 'relative',
+                                // top: -11,
+                            }}
+                        >
+                            <Image
 
+                                src="/rentout.svg"
+                                width={80}
+                                height={36}
+                                alt="Rent out button"
+                            />
+                        </div>
                         <Button
                             onClick={isLogin ? handleLogOut : handleOpen}
                             className={styles.button_account}
-                            style={{ marginLeft: 20 }}
+                            // style={{ marginLeft: 20 }}
                             variant="outlined" startIcon={<PersonIcon />}
                         >
                             <div>{isLogin ? 'Log Out' : 'My Account'}</div>
                             <div
                                 style={{
                                     fontSize: 7,
-                                    width:isLogin ? 40 : 0,
+                                    width: isLogin ? 40 : 0,
                                     marginLeft: 6,
                                     overflow: 'hidden',         // Hide any overflowed content
                                     textOverflow: 'ellipsis',   // Show "..." if the text is too long
@@ -213,31 +229,31 @@ export default function Index() {
             />
 
             {
-        calendarIsVisible && (
-            <motion.div
-                className={styles.custom_date_picker_container}
-                initial={{ opacity: 0, translateY: 46, scale: 1 }}
-                animate={{ opacity: 1, translateY: 68, scale: 1.3 }}
-                exit={{ opacity: 0, translateY: -30 }}
-                transition={{ duration: 0.35, delay: 0.05 }}
-            >
-                <div className={styles.custom_date_picker}>
-                    <DatePicker
-                        selected={startDate}
-                        onChange={handleDateChange}
-                        selectsRange
-                        startDate={startDate}
-                        endDate={endDate}
-                        inline
-                        minDate={new Date()}
-                        maxDate={new Date().setDate(new Date().getDate() + 180)}
-                        monthsShown={2}
-                        calendarClassName={styles.custom_calendar}
-                    />
-                </div>
-            </motion.div>
-        )
-    }
+                calendarIsVisible && (
+                    <motion.div
+                        className={styles.custom_date_picker_container}
+                        initial={{ opacity: 0, translateY: 46, scale: 1 }}
+                        animate={{ opacity: 1, translateY: 68, scale: 1.3 }}
+                        exit={{ opacity: 0, translateY: -30 }}
+                        transition={{ duration: 0.35, delay: 0.05 }}
+                    >
+                        <div className={styles.custom_date_picker}>
+                            <DatePicker
+                                selected={startDate}
+                                onChange={handleDateChange}
+                                selectsRange
+                                startDate={startDate}
+                                endDate={endDate}
+                                inline
+                                minDate={new Date()}
+                                maxDate={new Date().setDate(new Date().getDate() + 180)}
+                                monthsShown={2}
+                                calendarClassName={styles.custom_calendar}
+                            />
+                        </div>
+                    </motion.div>
+                )
+            }
 
             <div
                 style={{

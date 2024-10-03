@@ -160,7 +160,7 @@ export default function SlotsSignIn({ open, handleClose, isLogin, setIsLogin, na
                <SignInPage
                     signIn={(provider, formData) =>
                          alert(
-                              `Sign In Successful! Welcome back${email}`,
+                              `Sign In Successful! Welcome back ${email}`,
                          )
                     }
                     slots={{

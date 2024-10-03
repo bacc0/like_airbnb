@@ -1,68 +1,93 @@
 /* Styling for the calendar container */
 
-.custom_date_picker_container {
+.custom_date_picker_container {}
+
+.custom_date_picker {
+
+
+    display: flex;
+    justify-content: center;
+    /* padding-right: 180px; */
+    position: relative;
+    /* left: -13vw; */
 
 }
-.custom_date_picker {
-    
-
-     display: flex;
-     justify-content: center;
-     /* padding-right: 180px; */
-     position: relative;
-     /* left: -13vw; */
-     
- }
-
- 
- /* Styling for the calendar with border and rounded corners */
- .custom_calendar {
-     font-size: 0.75em !important;
-     font-family:sans-serif, Geneva, Verdana, sans-serif;
-     border-radius: 20px !important;
-     border: 0.1px solid #D6D6D6 !important;
-     box-shadow: 0 0 16px #bdbdbd;
-     padding: 15px;
- }
- 
- /* Styling for the calendar header (month and year) */
- .react-datepicker__header  {
-     border-top-left-radius: 28px !important;
-     border-top-right-radius: 28px !important;
-     background-color: #f0f0f0 !important;
-     /* border-bottom: 10.3px solid #900d58 !important; */
- 
- }
- 
- /* Styling for the past dates (out of range dates) */
- .react-datepicker__day--disabled {
-     color: #d3d3d3 !important;
- }
- 
- /* Day styling */
- .react-datepicker__day {
-     padding: 8px !important;
- }
- 
- /* Selected day styling */
- .react-datepicker__day--selected {
-     background-color: #0fb300 !important;
- }
- 
- /* Outside month day styling */
- .react-datepicker__day--outside-month {
-     color: #d3d3d3 !important;
- }
-
- .button_account {
-     position: relative;
-     top: -14px;
-     height: 60px;
-     border-radius:  50px !important;
-     border: 0.1px solid #999999 !important;
-     box-shadow: 0 0 10px #bdbdbd;
- }
 
 
+/* Styling for the calendar with border and rounded corners */
+.custom_calendar {
+    font-size: 0.75em !important;
+    font-family: sans-serif, Geneva, Verdana, sans-serif;
+    border-radius: 20px !important;
+    border: 0.1px solid #D6D6D6 !important;
+    box-shadow: 0 0 16px #bdbdbd;
+    padding: 15px;
+}
 
+/* Styling for the calendar header (month and year) */
+.react-datepicker__header {
+    border-top-left-radius: 28px !important;
+    border-top-right-radius: 28px !important;
+    background-color: #f0f0f0 !important;
+    /* border-bottom: 10.3px solid #900d58 !important; */
 
+}
+
+/* Styling for the past dates (out of range dates) */
+.react-datepicker__day--disabled {
+    color: #d3d3d3 !important;
+}
+
+/* Day styling */
+.react-datepicker__day {
+    padding: 8px !important;
+}
+
+/* Selected day styling */
+.react-datepicker__day--selected {
+    background-color: #0fb300 !important;
+}
+
+/* Outside month day styling */
+.react-datepicker__day--outside-month {
+    color: #d3d3d3 !important;
+}
+
+.button_account {
+    /* position: relative;
+    top: -11px; */
+    height: 60px;
+    border-radius: 50px !important;
+    border: 0.1px solid #999999 !important;
+    border-left: 0px solid 999999;
+
+    /* box-shadow: 6px 0 7px #bdbdbd; */
+    background: #ffffff !important;
+    border-radius: 0px 36px 36px 0px !important;
+}
+.button_account:hover {
+    background: #efefef !important;
+
+}
+
+.button_list_item {
+        
+        border: 0.4px solid red;
+        height: 60px;
+        border-radius: 36px 0px  0px 36px;
+        display: flex;      
+        align-items: center; 
+        justify-content: center;
+        background: #ffffff;
+        /* box-shadow: 0 0 10px #bdbdbd; */
+        padding-left: 6px;
+}
+.button_list_item:hover {
+    background: #efefef;
+    cursor: pointer;
+
+}
+.button_list_item:active {
+    background: #bababa;
+
+}
