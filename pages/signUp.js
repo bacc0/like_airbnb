@@ -9,6 +9,7 @@ import { motion } from 'framer-motion'; // For animations
 
 
 const AddNewProperty = () => {
+
     const [isLoading, setIsLoading] = useState(false);
     const [formVisible, setFormVisible] = useState(true); // State to manage form visibility
     const [showSuccessMessage, setShowSuccessMessage] = useState(false); // State to manage success message visibility
@@ -69,7 +70,7 @@ const AddNewProperty = () => {
     const handleMouseDownPassword = (event) => event.preventDefault();
 
     const redirectToHome = () => {
-        router.push("/");
+        router.push("/home");
     };
 
     return (

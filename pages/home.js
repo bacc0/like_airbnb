@@ -34,7 +34,7 @@ import ModalLogin from '../components/ModalLogin'
 
 export default function Index() {
 
-   
+
 
     // State to manage both start and end dates for range selection
     const [dateRange, setDateRange] = useState([null, null]);
@@ -149,7 +149,7 @@ export default function Index() {
                         initial={{
                             opacity: 0,
                             translateY: 43,
-                            translateX: -100,
+                            translateX: 33,
                             scale: 1
                         }} // Initial state
                         animate={{
@@ -158,7 +158,7 @@ export default function Index() {
                             translateX: 33,
                             scale: 1
                         }} // Animate to visible state
-                        transition={{ duration: 0.35, delay: 1.2, type: "spring", stiffness: 200 }}
+                        transition={{ duration: 0.35, delay: 0, type: "spring", stiffness: 200 }}
 
                         style={{
                             // position: "absolute",
@@ -184,7 +184,7 @@ export default function Index() {
                         className={styles.custom_date_picker_container}
                         initial={{ opacity: 0, translateY: -66, scale: 0.6 }} // Initial state
                         animate={{ opacity: 1, translateY: -66, scale: 1 }} // Animate to visible state
-                        transition={{ duration: 0.35, delay: 1.1, type: "spring", stiffness: 200 }}
+                        transition={{ duration: 0.35, delay: 0.3, type: "spring", stiffness: 200 }}
 
                         style={{
                             position: "relative",
@@ -205,9 +205,9 @@ export default function Index() {
 
                     <motion.div
                         className={styles.custom_date_picker_container}
-                        initial={{ opacity: 0, translateY: 0, scale: 3 }} // Initial state
+                        initial={{ opacity: 0, translateY: 0, scale: 1 }} // Initial state
                         animate={{ opacity: 1, translateY: 0, scale: 1 }} // Animate to visible state
-                        transition={{ duration: 0.35, delay: 0.7, type: "spring", stiffness: 200 }}
+                        transition={{ duration: 0.35, delay: 0, type: "spring", stiffness: 200 }}
 
                         style={{
                             position: "absolute",
@@ -256,10 +256,9 @@ export default function Index() {
 
                     <motion.div
                         className={styles.custom_date_picker_container}
-                        initial={{ opacity: 0, translateY: 46, scale: 1 }} // Initial state
-                        animate={{ opacity: 1, translateY: 68, scale: 1.3 }} // Animate to visible state
-                        exit={{ opacity: 0, translateY: -30 }} // Exit state
-                        transition={{ duration: 0.35, delay: 0.05 }} // Duration for the animation
+                        initial={{ opacity: 0, translateY: 68, scale: 1 }} // Initial state
+                        animate={{ opacity: 1, translateY: 68, scale: 1 }} // Animate to visible state
+                        transition={{ duration: 0.35, delay: 0 }} // Duration for the animation
                     >
                         <div className={styles.custom_date_picker}>
 
@@ -293,7 +292,13 @@ export default function Index() {
             }
 
             {/* Display 1st screen adds*/}
-            <div
+            <motion.div
+
+                className={styles.custom_date_picker_container}
+                initial={{ opacity: 1, translateY: 20, scale: 1.15 }} // Initial state
+                animate={{ opacity: 1, translateY: 0, scale: 1 }} // Animate to visible state
+                transition={{ duration: 0.3, delay: 0, type: "spring", stiffness: 200 }}
+
                 style={{
                     display: 'flex',
                     justifyContent: 'center',
@@ -304,10 +309,10 @@ export default function Index() {
 
                 <motion.div
                     className={styles.custom_date_picker_container}
-                    initial={{ opacity: 0.0, translateY: 520, scale: 1.3 }} // Initial state
+                    initial={{ opacity: 0, translateY: 128, scale: 1.3 }} // Initial state
                     animate={{ opacity: 1, translateY: 128, scale: 1.3 }} // Animate to visible state
                     exit={{ opacity: 0, translateY: -30 }} // Exit state
-                    transition={{ duration: 0.7, delay: 0.8, type: "spring", stiffness: 200 }} // Duration for the animation
+                    transition={{ duration: 0.7, delay: 0 }} // Duration for the animation
 
                     style={{
                         position: 'relative',
@@ -322,10 +327,10 @@ export default function Index() {
 
                     <motion.div
                         className={styles.custom_date_picker_container}
-                        initial={{ opacity: 0.0, translateY: 320, scale: 1.5 }} // Initial state
+                        initial={{ opacity: 0.5, translateY: 70, scale: 1 }} // Initial state
                         animate={{ opacity: 1, translateY: 70, scale: 1 }} // Animate to visible state
                         exit={{ opacity: 0, translateY: -30 }} // Exit state
-                        transition={{ duration: 0.7, delay: 0.82, type: "spring", stiffness: 200 }} // Duration for the animation
+                        transition={{ duration: 0.7, delay: 0.03 }} // Duration for the animation
 
                         style={{
                             position: 'relative',
@@ -343,7 +348,7 @@ export default function Index() {
 
 
 
-            </div>
+            </motion.div>
 
 
 
