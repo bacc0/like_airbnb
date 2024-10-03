@@ -4,7 +4,9 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useRouter } from "next/router"; // Import Next.js useRouter
-import { motion } from 'framer-motion'; // For animations
+import styles from '../src/styles/index.module.css'; // Import as a CSS module
+import { motion } from 'framer-motion'; // Import motion from Framer Motion
+import Image from 'next/image';
 
 const AddNewProperty = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -100,106 +102,129 @@ const AddNewProperty = () => {
     };
 
     return (
-        <Container maxWidth="sm" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
-            {formVisible ? (
-                <motion.div
-                    initial={{
-                        opacity: 0.5,
-                        translateY: -30,
-                        translateX: 0,
-                        scale: 1.3
-                    }} // Initial state
-                    animate={{
-                        opacity: 1,
-                        translateY: 0,
-                        translateX: 0,
-                        scale: 1
-                    }} // Animate to visible state
-                    transition={{ duration: 0.35, delay: 0, type: "spring", stiffness: 200 }}
-                >
-                    <h1 style={{ textAlign: 'center' }}>Create New User</h1>
+        <div>
+            <motion.div
+                onClick={redirectToHome}
+                className={styles.custom_date_picker_container}
+                initial={{ opacity: 0, translateY: 43, translateX: 33, scale: 1 }}
+                animate={{ opacity: 1, translateY: 43, translateX: 33, scale: 1 }}
+                transition={{ duration: 0.55, delay: 0 }}
+                style={{
+                    top: 45, left: 45,
+                    position: 'absolute', top: 0, left: 0,
+                    cursor: 'pointer'
+                }}
+            >
+                <Image
+                    src="/alibmb2.svg"
+                    width={130}
+                    height={60}
+                    alt="Logo"
+                />
+            </motion.div>
 
-                    <FormControl fullWidth variant="outlined" sx={{ my: 2 }}>
-                        <InputLabel htmlFor="outlined-adornment-username">Name</InputLabel>
-                        <OutlinedInput
-                            id="outlined-adornment-username"
-                            name="username"
-                            value={newUser.username}
-                            onChange={handleInputChange}
-                            startAdornment={<InputAdornment position="start"><AccountCircle /></InputAdornment>}
-                            label="Username"
-                        />
-                    </FormControl>
-
-                    <FormControl fullWidth variant="outlined" sx={{ my: 2 }}>
-                        <InputLabel htmlFor="outlined-adornment-email">Email</InputLabel>
-                        <OutlinedInput
-                            id="outlined-adornment-email"
-                            name="email"
-                            value={newUser.email}
-                            onChange={handleInputChange}
-                            startAdornment={<InputAdornment position="start"><AccountCircle /></InputAdornment>}
-                            label="Email"
-                        />
-                        {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
-                    </FormControl>
-
-                    <FormControl fullWidth variant="outlined" sx={{ my: 2 }}>
-                        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-                        <OutlinedInput
-                            id="outlined-adornment-password"
-                            name="password"
-                            type={showPassword ? 'text' : 'password'}
-                            value={newUser.password}
-                            onChange={handleInputChange}
-                            endAdornment={
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        onClick={handleClickShowPassword}
-                                        onMouseDown={handleMouseDownPassword}
-                                    >
-                                        {showPassword ? <VisibilityOff /> : <Visibility />}
-                                    </IconButton>
-                                </InputAdornment>
-                            }
-                            label="Password"
-                        />
-                        {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
-                    </FormControl>
-
-                    <Button
-                        variant="outlined"
-                        color="info"
-                        size="large"
-                        fullWidth
-                        sx={{ my: 2, backgroundColor: '#000000', color: '#ffffff', height: 60, borderRadius: 50 }}
-                        onClick={handleCreateUser}
-                        disabled={isLoading}
+            <Container maxWidth="sm" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+                {formVisible ? (
+                    <motion.div
+                        initial={{
+                            opacity: 0.5,
+                            translateY: -30,
+                            translateX: 0,
+                            scale: 1.3
+                        }} // Initial state
+                        animate={{
+                            opacity: 1,
+                            translateY: 0,
+                            translateX: 0,
+                            scale: 1
+                        }} // Animate to visible state
+                        transition={{ duration: 0.35, delay: 0, type: "spring", stiffness: 200 }}
                     >
-                        {isLoading ? 'Creating...' : 'Create User'}
-                    </Button>
+                        <h1 style={{ textAlign: 'center' }}>Create New User</h1>
 
-                    {/* New Button to Redirect to Home */}
-                    <Button
-                        variant="outlined"
-                        color="info"
-                        size="large"
-                        fullWidth
-                        sx={{ my: 2, backgroundColor: '#ffffff', color: '#000000', height: 60, borderRadius: 50, border: '0.3px solid #999' }}
-                        onClick={redirectToHome}
-                    >
-                        Go to Home
-                    </Button>
-                </motion.div>
-            ) : (
-                showSuccessMessage && (
-                    <motion.div initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
-                        <h2 style={{ fontWeight: 400, color: '#FF385C' }}>User created successfully!</h2>
+                        <FormControl fullWidth variant="outlined" sx={{ my: 2 }}>
+                            <InputLabel htmlFor="outlined-adornment-username">Name</InputLabel>
+                            <OutlinedInput
+                                id="outlined-adornment-username"
+                                name="username"
+                                value={newUser.username}
+                                onChange={handleInputChange}
+                                startAdornment={<InputAdornment position="start"><AccountCircle /></InputAdornment>}
+                                label="Username"
+                            />
+                        </FormControl>
+
+                        <FormControl fullWidth variant="outlined" sx={{ my: 2 }}>
+                            <InputLabel htmlFor="outlined-adornment-email">Email</InputLabel>
+                            <OutlinedInput
+                                id="outlined-adornment-email"
+                                name="email"
+                                value={newUser.email}
+                                onChange={handleInputChange}
+                                startAdornment={<InputAdornment position="start"><AccountCircle /></InputAdornment>}
+                                label="Email"
+                            />
+                            {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
+                        </FormControl>
+
+                        <FormControl fullWidth variant="outlined" sx={{ my: 2 }}>
+                            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                            <OutlinedInput
+                                id="outlined-adornment-password"
+                                name="password"
+                                type={showPassword ? 'text' : 'password'}
+                                value={newUser.password}
+                                onChange={handleInputChange}
+                                endAdornment={
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={handleClickShowPassword}
+                                            onMouseDown={handleMouseDownPassword}
+                                        >
+                                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                                        </IconButton>
+                                    </InputAdornment>
+                                }
+                                label="Password"
+                            />
+                            {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
+                        </FormControl>
+
+                        <Button
+                            variant="outlined"
+                            color="info"
+                            size="large"
+                            fullWidth
+                            sx={{ my: 2, backgroundColor: '#000000', color: '#ffffff', height: 60, borderRadius: 50 }}
+                            onClick={handleCreateUser}
+                            disabled={isLoading}
+                        >
+                            {isLoading ? 'Creating...' : 'Create User'}
+                        </Button>
+
+                        {/* New Button to Redirect to Home */}
+                        <Button
+                            variant="outlined"
+                            color="info"
+                            size="large"
+                            fullWidth
+                            sx={{ my: 2, backgroundColor: '#ffffff', color: '#000000', height: 60, borderRadius: 50, border: '0.3px solid #999' }}
+                            onClick={redirectToHome}
+                        >
+                            Go to Home
+                        </Button>
                     </motion.div>
-                )
-            )}
-        </Container>
+                ) : (
+                    showSuccessMessage && (
+                        <motion.div initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
+                            <h2 style={{ fontWeight: 400, color: '#FF385C' }}>User created successfully!</h2>
+                        </motion.div>
+                    )
+                )}
+
+            </Container>
+        </div>
     );
 };
 

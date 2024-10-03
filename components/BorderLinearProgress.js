@@ -44,7 +44,7 @@ export default function CustomizedProgressBars() {
                     translateX: 1,
                     scale: 1
                }} // Animate to visible state
-               transition={{ duration: 0.8, delay: 0, }}
+               transition={{ duration: 0.4, delay: 0, }}
 
                style={{
                     position: 'absolute',  // Absolute positioning

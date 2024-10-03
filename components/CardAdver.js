@@ -10,7 +10,11 @@ export default function CardAdver({ img, title, text }) {
           <div style={{ width: 240, margin: '8px 10px ', borderRadius: 20 }}>
 
                <CardMedia
-                    style={{ width: 240, height: 240, borderRadius: 20 }}
+                    style={{ 
+                         width: 240, height: 240, 
+                         borderRadius: 20,
+                         backgroundColor: '#eeeeee'
+                     }}
                     component="img"
                     height="140"
                     image={img}

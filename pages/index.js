@@ -137,9 +137,9 @@ export default function Index() {
                 >
                     <motion.div
                         className={styles.custom_date_picker_container}
-                        initial={{ opacity: 0, translateY: 43, translateX: -100, scale: 1 }}
+                        initial={{ opacity: 0, translateY: 43, translateX: 33, scale: 1 }}
                         animate={{ opacity: 1, translateY: 43, translateX: 33, scale: 1 }}
-                        transition={{ duration: 0.35, delay: 1.2, type: "spring", stiffness: 200 }}
+                        transition={{ duration: 0.55, delay: 0 }}
                         style={{ top: 45, left: 45 }}
                     >
                         <Image
@@ -167,15 +167,15 @@ export default function Index() {
 
                     <motion.div
                         className={styles.custom_date_picker_container}
-                        initial={{ opacity: 0, translateY: 0, scale: 3 }}
+                        initial={{ opacity: 0, translateY: 0, scale: 1 }}
                         animate={{ opacity: 1, translateY: 0, scale: 1 }}
-                        transition={{ duration: 0.35, delay: 0.7, type: "spring", stiffness: 200 }}
-                        style={{ 
-                            position: "absolute", 
-                            top: 46, 
-                            right: 45, 
-                            display: 'flex', 
-                            alignItems: 'center' ,
+                        transition={{ duration: 0.55, delay: 0 }}
+                        style={{
+                            position: "absolute",
+                            top: 46,
+                            right: 45,
+                            display: 'flex',
+                            alignItems: 'center',
                             boxShadow: '0 0 10px #bdbdbd',
                             borderRadius: 36
                         }}
@@ -265,21 +265,26 @@ export default function Index() {
             >
                 <motion.div
                     className={styles.custom_date_picker_container}
-                    initial={{ opacity: 0.0, translateY: 520, scale: 1.3 }}
+                    initial={{ opacity: 0.0, translateY: 118, scale: 1.35 }}
                     animate={{ opacity: 1, translateY: 128, scale: 1.3 }}
-                    exit={{ opacity: 0, translateY: -30 }}
-                    transition={{ duration: 0.7, delay: 0.8, type: "spring", stiffness: 200 }}
-                    style={{ position: 'relative', top: calendarIsVisible ? 0 : -80, transition: 'top 0.35s ease' }}
+
+                    transition={{ duration: 0.6, delay: 0.6 }}
+
+                    style={{
+                        position: 'relative',
+                        top: calendarIsVisible ? 0 : -80,
+                        transition: 'top 0.35s ease'
+                    }}
                 >
                     <h3>Inspiration from past experiences</h3>
                     {cards2}
 
                     <motion.div
                         className={styles.custom_date_picker_container}
-                        initial={{ opacity: 0.0, translateY: 320, scale: 1.5 }}
+                        initial={{ opacity: 0.0, translateY: 80, scale: 1.15 }}
                         animate={{ opacity: 1, translateY: 70, scale: 1 }}
-                        exit={{ opacity: 0, translateY: -30 }}
-                        transition={{ duration: 0.7, delay: 0.82, type: "spring", stiffness: 200 }}
+                        transition={{ duration: 0.6, delay: 0.63 }}
+
                         style={{ position: 'relative', top: calendarIsVisible ? 0 : -80, transition: 'top 0.35s ease' }}
                     >
                         {cards1}
