@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import styles from '../src/styles/index.module.css'; // Import as a CSS module
-import { motion } from 'framer-motion'; // Import motion from Framer Motion
+import { AnimatePresence, motion } from 'framer-motion'; // Import motion from Framer Motion
 import Image from 'next/image';
 
 import Container from "@mui/material/Container";
@@ -150,6 +150,22 @@ export default function Index() {
                         />
                     </motion.div>
 
+                    <AnimatePresence>
+                        {isLogin && (
+                            <motion.div
+                                initial={{ opacity: 0, translateY: 43, translateX: 33, scale: 0 }}
+                                animate={{ opacity: 1, translateY: 43, translateX: 33, scale: 1 }}
+                                transition={{ duration: 0.3, delay: 0.7, type: "spring", stiffness: 200 }}
+                                exit={{ opacity: 0,  scale: 0 }}
+                                style={{
+                                    position: 'absolute', top: 12, left: 140,
+                                    cursor: 'pointer',
+                                }}
+                            >
+                                <Button className={styles.button_my_account}>My account</Button>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                     <motion.div
                         className={styles.custom_date_picker_container}
                         initial={{ opacity: 0, translateY: -66, scale: 0.6 }}
@@ -204,7 +220,7 @@ export default function Index() {
                             <div>{isLogin ? 'Log Out' : 'My Account'}</div>
                             <div
                                 style={{
-                                    fontSize: 7,
+                                    fontSize: 10,
                                     width: isLogin ? 40 : 0,
                                     marginLeft: 6,
                                     overflow: 'hidden',         // Hide any overflowed content

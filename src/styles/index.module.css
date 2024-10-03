@@ -53,6 +53,18 @@
     color: #d3d3d3 !important;
 }
 
+.button_my_account{
+    position: relative;
+    top: -11px;
+    height: 60px;
+    border-radius: 50px !important;
+    color: #ffffff !important;
+    background: #000000 !important;
+     box-shadow: 0 0 10px #bdbdbd;
+     text-transform: capitalize !important;
+
+}
+
 .button_account {
     /* position: relative;
     top: -11px; */
@@ -64,6 +76,7 @@
     /* box-shadow: 6px 0 7px #bdbdbd; */
     background: #ffffff !important;
     border-radius: 0px 36px 36px 0px !important;
+    text-transform: capitalize !important;
 }
 .button_account:hover {
     background: #efefef !important;
@@ -72,7 +85,7 @@
 
 .button_list_item {
         
-        border: 0.4px solid red;
+        border: 0.4px solid #FF385C;
         height: 60px;
         border-radius: 36px 0px  0px 36px;
         display: flex;      

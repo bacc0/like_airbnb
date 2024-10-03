@@ -24,6 +24,7 @@
 .button_check_in {
     height: 60px;
     width: 140px;
+    text-transform: capitalize !important;
 }
 
 .button_search {

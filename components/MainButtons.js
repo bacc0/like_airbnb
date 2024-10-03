@@ -7,6 +7,8 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import DateRangeRoundedIcon from '@mui/icons-material/DateRangeRounded';
 import styles from '../src/styles/main_buttons.module.css';
 import { motion } from 'framer-motion'; // Import motion from Framer Motion
+import InputAdornment from '@mui/material/InputAdornment';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 export default function MainButtons({ calendarIsVisible, setCalendarIsVisible,
      destination, setDestination
@@ -56,7 +58,9 @@ export default function MainButtons({ calendarIsVisible, setCalendarIsVisible,
                                    variant="standard"
                                    value={destination} // Controlled input: value is tied to the state
                                    onChange={handleDestinationChange} // Update state when the user types
+                                  
                               />
+
 
                               <Button
                                    startIcon={<DateRangeRoundedIcon />}
@@ -75,6 +79,7 @@ export default function MainButtons({ calendarIsVisible, setCalendarIsVisible,
                                    style={{
                                         background: calendarIsVisible ? '#000000' : '#FFFFFF',
                                         color: calendarIsVisible ? '#FFFFFF' : '#000000',
+                                        textTransform: 'capitalize'
                                    }}
                                    key="three"
                               >
