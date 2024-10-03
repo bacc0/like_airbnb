@@ -65,7 +65,7 @@ export default function Index() {
     useEffect(() => {
         setTimeout(() => {
             setBorderLinearProgress_Visible(false)
-        }, 1000);
+        }, 800);
     }, []);
 
     const handleDateChange = (dates) => {

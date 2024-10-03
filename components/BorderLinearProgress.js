@@ -16,6 +16,7 @@ import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgr
 function BorderLinearProgress() {
      return (
           <React.Fragment>
+
                <svg width={0} height={0}>
                     <defs>
                          <linearGradient id="my_gradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -38,12 +39,12 @@ export default function CustomizedProgressBars() {
                     scale: 1
                }} // Initial state
                animate={{
-                    opacity: 0.6,
+                    opacity: 0.9,
                     translateY: 0,
                     translateX: 1,
                     scale: 1
                }} // Animate to visible state
-               transition={{ duration: 0.7, delay: 0.3, }}
+               transition={{ duration: 0.8, delay: 0, }}
 
                style={{
                     position: 'absolute',  // Absolute positioning
@@ -56,9 +57,17 @@ export default function CustomizedProgressBars() {
                }}
           >
                <Stack spacing={2} sx={{ flexGrow: 1 }}
-                 
+
                >
                     <BorderLinearProgress />
+
+                    <h4
+                         style={{
+                              fontSize: 12, 
+                              fontWeight: 100,
+                              marginLeft: -4
+                         }}
+                    > Loading...</h4>
                </Stack>
           </motion.div >
      );
