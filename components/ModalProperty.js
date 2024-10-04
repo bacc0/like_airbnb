@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import CloseIcon from '@mui/icons-material/Close';
-import { AnimatePresence, motion } from 'framer-motion'; 
+import { AnimatePresence, motion } from 'framer-motion';
 import LoginSuccessful from './LoginSuccessful';
 
 
@@ -162,11 +162,11 @@ const ModalProperty = ({
                     <span style={{ fontWeight: 600 }}> {property.Address.city}</span>
                 </p>
                 <p>
-                    <span style={{ paddingRight: 7, color: "#FF385C" }}> Start Date:</span>
+                    <span style={{ paddingRight: 7, color: formattedStartDate ? "#FF385C" : "#FF385C55" }}> Start Date:</span>
                     <span style={{ fontWeight: 600 }}> {formattedStartDate}</span>
                 </p>
                 <p>
-                    <span style={{ paddingRight: 7, color: "#FF385C" }}> End Date:</span>
+                    <span style={{ paddingRight: 7, color: formattedEndDate ? "#FF385C" : "#FF385C55" }}> End Date:</span>
                     <span style={{ fontWeight: 600 }}> {formattedEndDate}</span>
                 </p>
                 <p>

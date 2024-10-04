@@ -98,8 +98,8 @@ export default function MainButtons({ calendarIsVisible, setCalendarIsVisible,
                                         handleSearchResultsOpen();
                                    }}
                                    style={{
-                                        background: calendarIsVisible ? '#000000' : '#FFFFFF',
-                                        color: calendarIsVisible ? '#FFFFFF' : '#000000',
+                                        background: calendarIsVisible ? '#000000' : '#f5f5f5',
+                                        color: calendarIsVisible ? '#FFFFFF' : '#ccc',
                                         textTransform: 'capitalize'
                                    }}
                                    key="three"

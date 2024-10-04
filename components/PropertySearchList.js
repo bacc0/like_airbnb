@@ -190,7 +190,8 @@ const PropertySearchList = ({
                                         position: 'relative',
                                         top: 20,
                                    }}
-                              >  Or
+                              >  
+                              {/* Or
                                    <a
                                         style={{
 
@@ -203,7 +204,7 @@ const PropertySearchList = ({
                                              borderRadius: 30,
                                              color: '#FF385C'
                                         }}
-                                        href="#" onClick={handleSearchResultsClose}>go to the home page</a>
+                                        href="#" onClick={handleSearchResultsClose}>go to the home page</a> */}
                               </span>
                     </p>
                )}
