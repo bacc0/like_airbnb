@@ -86,13 +86,13 @@ const InspirationImages = ({
                     </motion.div>
                </div>
 
-               <div style={{ position: 'absolute', bottom: 0, left: 50, background: '#ffffffcc', padding: 30, borderRadius: 20 }}>
+               {/* <div style={{ position: 'absolute', bottom: 0, left: 50, background: '#ffffffcc', padding: 30, borderRadius: 20 }}>
                     <h3>Selected Dates:</h3>
                     <p>Destination: {destination || '-'}</p>
                     <p>Start Date: {formattedStartDate || '-'}</p>
                     <p>End Date: {formattedEndDate || '-'}</p>
                     <p>Length of Nights: {lengthOfNights > 0 ? lengthOfNights : '-'}</p>
-               </div>
+               </div> */}
           </Fragment>
      )
 }

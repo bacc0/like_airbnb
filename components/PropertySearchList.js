@@ -66,24 +66,47 @@ const PropertySearchList = ({
      return (
           <motion.div
 
-               initial={{ opacity: 0, translateY: 40, scale: 0 }}
-               animate={{ opacity: 1, 
-                    translateY: calendarIsVisible ? 123 : 30, 
-                    scale: 1 }}
-               transition={{ duration: 0.35, delay: 1.1, type: "spring", stiffness: 200 }}
+               initial={{ opacity: 0, translateY: 40, scale: 1 }}
+               animate={{
+                    opacity: 1,
+                    translateY: calendarIsVisible ? 123 : 30,
+                    scale: 1
+               }}
+               transition={{ duration: 0.35, delay: 0.1, type: "spring", stiffness: 200 }}
 
                style={{
                     maxWidth: 986,
                     margin: '0 auto'
                }}
           >
-               <h2 style={{marginBottom: 37}}>Available Properties</h2>
+               <h2 style={{ marginBottom: 37 }}>Available Properties</h2>
 
                {!showAll && destination && filteredProperties.length === 0 ? (
-                    <p>No properties available in {destination}. Please enter a valid destination or <a href="#" onClick={handleShowAll}>click here to see all properties</a>.</p>
+                    <motion.p
+                         initial={{ opacity: 0, translateY: -10, scale: 1.1 }}
+                         animate={{ opacity: 1, translateY: 0, scale: 1 }}
+                         transition={{ duration: 0.35, delay: 0.6 }}
+
+                    >No properties available in {destination}. Please enter a valid destination or <a 
+                    style={{
+                         fontSize: 20,
+                         textDecoration: 'none',
+                         padding: 12,
+                         margin: 8,
+                         border: '0.1px solid #FF385C',
+                         borderRadius: 30,
+                         color: '#FF385C'
+                    }}
+                    href="#" onClick={handleShowAll}>click here to see all properties</a>
+                    </motion.p>
                ) : filteredProperties.length > 0 ? (
 
-                    <ul style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', padding: 0 }}>
+                    <motion.ul 
+                    initial={{ opacity: 0, translateY: -10, scale: 1.1 }}
+                    animate={{ opacity: 1, translateY: 0, scale: 1 }}
+                    transition={{ duration: 0.35, delay: 0.9 }}
+
+                    style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', padding: 0 }}>
                          {filteredProperties.map((property) => (
                               <li key={property.id} style={{ listStyle: 'none' }}>
                                    <Card
@@ -121,11 +144,11 @@ const PropertySearchList = ({
                                    </Card>
                               </li>
                          ))}
-                    </ul>
+                    </motion.ul>
                ) : (
                     !showAll && <p>
                          <div>  No properties available.</div>
-                         <div
+                         <span
                               style={{
                                    position: 'relative',
                                    top: 20,
@@ -138,14 +161,18 @@ const PropertySearchList = ({
                                         padding: 12,
                                         margin: 8,
                                         border: '0.1px solid #FF385C',
-                                        borderRadius: 8,
+                                        borderRadius: 30,
                                         color: '#FF385C'
                                    }}
-                                   href="#" onClick={handleShowAll}>click here to see all properties</a></div>
-                         <div
+                                   href="#" onClick={handleShowAll}
+                                   >
+                                        click here to see all properties
+                                   </a><
+                                        /span>
+                         <span
                               style={{
                                    position: 'relative',
-                                   top: 40,
+                                   top: 20,
                               }}
                          >  Or
                               <a
@@ -157,11 +184,11 @@ const PropertySearchList = ({
 
                                         margin: 8,
                                         border: '0.1px solid #FF385C',
-                                        borderRadius: 8,
+                                        borderRadius: 30,
                                         color: '#FF385C'
                                    }}
                                    href="#" onClick={handleSearchResultsClose}>go to the home page</a>
-                         </div>
+                         </span>
                     </p>
                )}
 

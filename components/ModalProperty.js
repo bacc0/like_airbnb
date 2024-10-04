@@ -6,6 +6,8 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import CloseIcon from '@mui/icons-material/Close';
 
+import LoginSuccessful from './LoginSuccessful';
+
 
 const ModalProperty = ({
     property,
@@ -36,16 +38,24 @@ const ModalProperty = ({
             addReservationToUser(property, formattedStartDate, formattedEndDate, lengthOfNights);
             handleSearchResultsClose();
         } else {
+            alert('Please ensure you are logged in first.')
             handleSearchResultsClose(); // Close the modal if not logged in
+
         }
     };
 
     const addReservationToUser = async (property, startDate, endDate, nights) => {
-
         const user = 'Veselin'; // The currently logged-in user
         const url = `https://airbnb-d4964-default-rtdb.europe-west1.firebasedatabase.app/Reservations.json`;
 
         try {
+            // Check if the startDate or endDate is missing
+            if (!startDate || !endDate) {
+                alert('You must add start and end days before you reserve.');
+                handleSearchResultsClose();  // Trigger this function after the alert
+                return;  // Exit the function early
+            }
+
             // Fetch existing reservations
             const existingReservationsResponse = await fetch(url);
             const existingReservations = await existingReservationsResponse.json();
@@ -59,6 +69,7 @@ const ModalProperty = ({
 
             if (isAlreadyBooked) {
                 alert('This property is already booked for the selected dates.');
+                handleSearchResultsClose();  // Trigger this function after the alert
                 return;
             }
 
@@ -72,7 +83,7 @@ const ModalProperty = ({
                 city: property.Address.city,
                 pricePerNight: property.PricePerNight,
                 mainImage: property['Front Image'],  // Adding the front image as the main image
-                imageUrls: imageUrls,
+                imageUrls: property.imageUrls,  // Assuming imageUrls is part of the property object
                 startDate: startDate,
                 endDate: endDate,
                 nights: nights,
@@ -88,13 +99,16 @@ const ModalProperty = ({
             });
 
             if (response.ok) {
-                alert('Reservation successfully added to Veselin\'s account!');
+                alert('Reservation successfully added!');
+                handleSearchResultsClose();  // Trigger after a successful reservation
             } else {
                 alert('Failed to add reservation.');
+                handleSearchResultsClose();  // Trigger after a failed reservation attempt
             }
         } catch (error) {
             console.error('Error adding reservation:', error);
             alert('An error occurred while adding the reservation.');
+            handleSearchResultsClose();  // Trigger even if there's an error
         }
     };
 
@@ -102,79 +116,7 @@ const ModalProperty = ({
 
 
     return (
-        // <div style={{modalOverlayStyle}}>
-        //     <div style={modalContentStyle}>
-        //         <button onClick={onClose} style={closeButtonStyle}>X</button>
-        //         <h2>{property.Address.title}</h2>
-        //         <p>
-        //             <span style={{ paddingRight: 7, color: "#FF385C" }}>  Description:</span>
-        //             <span style={{ fontWeight: 600 }}>{property.Address.description}</span>
-        //         </p>
-        //         <p>
-        //             <span style={{ paddingRight: 7, color: "#FF385C" }}> Address:</span>
-        //             <span style={{ fontWeight: 600 }}>  {property.Address.Address}</span>
-        //         </p>
-        //         <p>
-        //             <span style={{ paddingRight: 7, color: "#FF385C" }}> City:</span>
-        //             <span style={{ fontWeight: 600 }}> {property.Address.city}</span>
-        //         </p>
-        //         <p>
-        //             <span style={{ paddingRight: 7, color: "#FF385C" }}> Start Date:</span>
-        //             <span style={{ fontWeight: 600 }}> {formattedStartDate}</span>
-        //         </p>
-        //         <p>
-        //             <span style={{ paddingRight: 7, color: "#FF385C" }}> End Date:</span>
-        //             <span style={{ fontWeight: 600 }}> {formattedEndDate}</span>
-        //         </p>
-        //         <p>
-        //             <span style={{ paddingRight: 7, color: "#FF385C" }}> Nights:</span>
-        //             <span style={{ fontWeight: 600 }}> {lengthOfNights} nights</span>
-        //         </p>
 
-        //         <div style={scrollableGalleryStyle}>
-        //             {imageUrls.map((url, index) => (
-        //                 <img
-        //                     key={index}
-        //                     src={url}
-        //                     alt={`Image ${index + 1}`}
-        //                     style={imageStyle}
-        //                     onClick={() => handleImageClick(url)} // Enlarge the image when clicked
-        //                 />
-        //             ))}
-        //         </div>
-        //         <div
-        //             style={{
-        //                 display: 'flex',
-        //                 justifyContent: 'space-between',
-        //                 marginTop: 20,
-        //                 marginBottom: 6,
-        //             }}
-        //         >
-        //             <p>
-        //                 <span style={{ paddingRight: 7, color: "#FF385C" }}> Price per night: </span>
-        //                 <span style={{ fontWeight: 600 }}>  £{property.PricePerNight}</span></p>
-        //             <Button
-        //                 onClick={handleButtonReserve}
-        //                 style={{
-        //                     background: "#FF385C",
-        //                     color: "#ffffff",
-        //                     height: 60,
-        //                     width: 160,
-        //                     borderRadius: 60,
-        //                     boxShadow: '0px 0 7px #bdbdbd'
-        //                 }}
-        //             >
-        //                 Reserve
-        //             </Button>
-        //         </div>
-        //         {/* Display the enlarged image in a modal */}
-        //         {enlargedImage && (
-        //             <div style={enlargedOverlayStyle} onClick={closeEnlargedImage}>
-        //                 <img src={enlargedImage} alt="Enlarged" style={enlargedImageStyle} />
-        //             </div>
-        //         )}
-        //     </div>
-        // </div>
 
         <Modal
             open={open}
@@ -276,8 +218,8 @@ const ModalProperty = ({
                             style={{
 
                                 position: 'absolute',
-                                top: '0%',
-                                left: '96%',
+                                top: '-1%',
+                                left: '99%',
                                 transform: 'translate(-50%, -50%)', // Center the "x" in the middle of the modal
                                 // width: 100,
                                 display: 'flex',
@@ -385,8 +327,16 @@ const enlargedOverlayStyle = {
 const enlargedImageStyle = {
     width: '750px',
     height: '750px',
+
+    maxWidth: '750px',
+    maxHeight: '750px',
+
+    minWidth: '750px',
+    minHeight: '750px',
+    
     objectFit: 'cover',
     borderRadius: 20,
+    boxShadow: '0 0 50px #00000044'
 };
 
 export default ModalProperty;
