@@ -27,7 +27,7 @@ const style = {
     border: '6px solid #ffffff'
 };
 
-export default function AccountModal({
+export default function ModalUserBookings({
     handleCloseAccount,
     openAccount,
     name,  // User's name (filtered bookings)

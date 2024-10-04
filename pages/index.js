@@ -17,11 +17,15 @@ import AppBar from '@mui/material/AppBar';
 
 
 import BorderLinearProgress from '../components/BorderLinearProgress';
-import ModalLogin from '../components/ModalLogin';
-import ModalAccount from '../components/ModalAccount';
 import LoginSuccessful from '../components/LoginSuccessful';
 import InspirationImages from '../components/InspirationImages';
 import PropertySearchList from '../components/PropertySearchList';
+
+import ModalLogin from '../components/ModalLogin';
+import ModalUserBookings from '../components/ModalUserBookings';
+import ModalOwnerBookings from '../components/ModalOwnerBookings';
+
+
 
 export default function Index() {
     const [isLogin, setIsLogin] = useState(false);
@@ -35,7 +39,10 @@ export default function Index() {
     const [calendarIsVisible, setCalendarIsVisible] = useState(false);
     const [BorderLinearProgress_Visible, setBorderLinearProgress_Visible] = useState(true);
     const [open, setOpen] = useState(false);
+
     const [openAccount, setOpenAccount] = useState(false);
+    const [openOwnerAccount, setOpenOwnerAccount] = useState(false);
+
     const [searchResults, setSearchResults] = useState(false);
     const [showAll, setShowAll] = useState(false); // Track whether "show all" is clicked
     const [email, setEmail] = React.useState('');
@@ -55,6 +62,13 @@ export default function Index() {
 
     const handleOpenAccount = () => setOpenAccount(true);
     const handleCloseAccount = () => setOpenAccount(false);
+
+    const handleOpenOwner = () => {
+        if (isLogin) {
+            setOpenOwnerAccount(true)
+        }
+    };
+    const handleCloseOwner = () => setOpenOwnerAccount(false);
 
     const handleSearchResultsOpen = () => setSearchResults(true);
     const handleSearchResultsClose = () => setSearchResults(false);
@@ -193,6 +207,7 @@ export default function Index() {
                                 // position: 'relative',
                                 // top: -11,
                             }}
+                            onClick={handleOpenOwner}
                         >
                             <Image
                                 src="/rentout.svg"
@@ -234,9 +249,14 @@ export default function Index() {
                 setName={setName} // Pass the setName function to ModalLogin
 
             />
-            <ModalAccount
+            <ModalUserBookings
                 handleCloseAccount={handleCloseAccount}
                 openAccount={openAccount}
+                name={name}
+            />
+             <ModalOwnerBookings
+                handleCloseOwner={handleCloseOwner}
+                openOwnerAccount={openOwnerAccount}
                 name={name}
             />
 

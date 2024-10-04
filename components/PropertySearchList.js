@@ -76,7 +76,7 @@ const PropertySearchList = ({
                transition={{ duration: 0.35, delay: 0.1, type: "spring", stiffness: 200 }}
 
                style={{
-                    maxWidth: 986,
+                    maxWidth: 996,
                     margin: '0 auto'
                }}
           >
@@ -103,9 +103,9 @@ const PropertySearchList = ({
                ) : filteredProperties.length > 0 ? (
 
                     <motion.ul
-                         initial={{ opacity: 0, translateY: -10, scale: 1.1 }}
+                         initial={{ opacity: 0, translateY: -10, scale: 1.05 }}
                          animate={{ opacity: 1, translateY: 0, scale: 1 }}
-                         transition={{ duration: 0.35, delay: 0.9 }}
+                         transition={{ duration: 0.6, delay: 0.6 }}
 
                          style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', padding: 0 }}>
                          {filteredProperties.map((property) => (
@@ -116,7 +116,16 @@ const PropertySearchList = ({
                                              maxHeight: 310,
                                              minWidth: 310,
                                              minHeight: 310,
-                                             borderRadius: 20
+                                             borderRadius: 20,
+
+                                             margin: '0 4px',
+                                             // backgroundImage: `url(${property['Front Image']})`, // Add background image
+                                             // backgroundSize: 'cover',
+                                             // backgroundPosition: 'center', // Center the background image
+                                             // imageRendering: 'pixelated', // Apply pixelated effect
+                                             // filter: 'contrast(120%)',
+                                             
+
                                         }}
                                         onClick={() => handlePropertyClick(property)}
                                    >
@@ -126,6 +135,11 @@ const PropertySearchList = ({
                                                   height="192"
                                                   image={property['Front Image']}
                                                   alt={property.Address.title}
+                                                  style={{
+                                                       //   margin: '0 6px'
+                                                       // borderRadius: 18
+                                                       filter: 'contrast(120%)',
+                                                  }}
                                              />
                                              <CardContent>
                                                   <Typography gutterBottom variant="h5" component="div">
