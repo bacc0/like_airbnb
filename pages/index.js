@@ -26,6 +26,7 @@ import IconButton from '@mui/material/IconButton';
 import BorderLinearProgress from '../components/BorderLinearProgress';
 import ModalLogin from '../components/ModalLogin';
 import ModalAccount from '../components/ModalAccount';
+import LoginSuccessful from '../components/LoginSuccessful';
 
 export default function Index() {
     const [isLogin, setIsLogin] = useState(false);
@@ -253,7 +254,7 @@ export default function Index() {
                     </motion.div>
                 </AppBar>
             </Box>
-
+            {isLogin && <LoginSuccessful />}
             <ModalLogin
                 handleClose={handleClose}
                 open={open}
@@ -268,9 +269,9 @@ export default function Index() {
                 // isLogin={isLogin}
                 // setIsLogin={setIsLogin}
                 name={name} // Pass the setName function to ModalLogin
-                // setName={setName} // Pass the setName function to ModalLogin
+            // setName={setName} // Pass the setName function to ModalLogin
             />
-            
+
 
             {
                 calendarIsVisible && (
