@@ -25,6 +25,7 @@ import IconButton from '@mui/material/IconButton';
 
 import BorderLinearProgress from '../components/BorderLinearProgress';
 import ModalLogin from '../components/ModalLogin';
+import ModalAccount from '../components/ModalAccount';
 
 export default function Index() {
     const [isLogin, setIsLogin] = useState(false);
@@ -38,8 +39,14 @@ export default function Index() {
     const [calendarIsVisible, setCalendarIsVisible] = useState(false);
     const [BorderLinearProgress_Visible, setBorderLinearProgress_Visible] = useState(true);
     const [open, setOpen] = useState(false);
+    const [openAccount, setOpenAccount] = useState(false);
 
     const router = useRouter(); // For redirection if needed
+
+    const openMyAccount = () => {
+        router.push('/myAccount'); // Navigate to the home page ("/")
+    };
+
 
     useEffect(() => {
         if (isLogin) {
@@ -49,6 +56,10 @@ export default function Index() {
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+    const handleOpenAccount = () => setOpenAccount(true);
+    const handleCloseAccount = () => setOpenAccount(false);
+
     const handleLogOut = () => {
         setIsLogin(false);
         setName(''); // Clear the user's name on logout
@@ -150,22 +161,7 @@ export default function Index() {
                         />
                     </motion.div>
 
-                    <AnimatePresence>
-                        {isLogin && (
-                            <motion.div
-                                initial={{ opacity: 0, translateY: 43, translateX: 33, scale: 0 }}
-                                animate={{ opacity: 1, translateY: 43, translateX: 33, scale: 1 }}
-                                transition={{ duration: 0.3, delay: 0.7, type: "spring", stiffness: 200 }}
-                                exit={{ opacity: 0,  scale: 0 }}
-                                style={{
-                                    position: 'absolute', top: 12, left: 140,
-                                    cursor: 'pointer',
-                                }}
-                            >
-                                <Button className={styles.button_my_account}>My account</Button>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
+
                     <motion.div
                         className={styles.custom_date_picker_container}
                         initial={{ opacity: 0, translateY: -66, scale: 0.6 }}
@@ -178,8 +174,31 @@ export default function Index() {
                             setCalendarIsVisible={setCalendarIsVisible}
                             destination={destination}
                             setDestination={setDestination}
+                            isLogin={isLogin}
                         />
                     </motion.div>
+
+                    <AnimatePresence>
+                        {isLogin && (
+                            <motion.div
+                                initial={{ opacity: 0, translateY: 43, translateX: 33, scale: 0 }}
+                                animate={{ opacity: 1, translateY: 43, translateX: 33, scale: 1 }}
+                                transition={{ duration: 0.3, delay: 0.7, type: "spring", stiffness: 200 }}
+                                exit={{ opacity: 0, scale: 0 }}
+                                style={{
+                                    position: 'absolute', top: 12, left: 140,
+                                    cursor: 'pointer',
+                                }}
+
+                            >
+                                <Button
+                                    onClick={handleOpenAccount}
+                                    className={styles.button_my_account}>
+                                    My account
+                                </Button>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
 
                     <motion.div
                         className={styles.custom_date_picker_container}
@@ -243,6 +262,15 @@ export default function Index() {
                 name={name} // Pass the setName function to ModalLogin
                 setName={setName} // Pass the setName function to ModalLogin
             />
+            <ModalAccount
+                handleCloseAccount={handleCloseAccount}
+                openAccount={openAccount}
+                // isLogin={isLogin}
+                // setIsLogin={setIsLogin}
+                name={name} // Pass the setName function to ModalLogin
+                // setName={setName} // Pass the setName function to ModalLogin
+            />
+            
 
             {
                 calendarIsVisible && (

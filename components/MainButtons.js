@@ -71,6 +71,7 @@ export default function MainButtons({ calendarIsVisible, setCalendarIsVisible,
                               >
                                    Check In
                               </Button>
+                              
 
                               <Button
                                    startIcon={<SearchRoundedIcon />}

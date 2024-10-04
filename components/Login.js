@@ -158,11 +158,11 @@ export default function SlotsSignIn({ open, handleClose, isLogin, setIsLogin, na
      return (
           <AppProvider theme={theme}>
                <SignInPage
-                    signIn={(provider, formData) =>
-                         alert(
-                              `Sign In Successful! Welcome back ${email}`,
-                         )
-                    }
+                    // signIn={(provider, formData) =>
+                    //      alert(
+                    //           `Sign In Successful! Welcome back ${email}`,
+                    //      )
+                    // }
                     slots={{
                          emailField: () => <CustomEmailField email={email} setEmail={setEmail} />,
                          passwordField: () => <CustomPasswordField password={password} setPassword={setPassword} />,
