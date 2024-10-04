@@ -206,7 +206,7 @@ const ModalProperty = ({
                                     Total Price:
                                 </span>
                                 <span style={{ fontWeight: 600, fontSize: 26 }}>
-                                    £{property.PricePerNight * lengthOfNights}
+                                    £{(property.PricePerNight * lengthOfNights).toFixed(2)}
                                 </span>
                             </>
                         }
