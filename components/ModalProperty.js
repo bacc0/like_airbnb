@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import CloseIcon from '@mui/icons-material/Close';
-
+import { AnimatePresence, motion } from 'framer-motion'; 
 import LoginSuccessful from './LoginSuccessful';
 
 

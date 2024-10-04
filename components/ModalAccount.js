@@ -8,6 +8,8 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Padding } from '@mui/icons-material';
+import { AnimatePresence, motion } from 'framer-motion';
+
 
 const style = {
     position: 'absolute',
@@ -84,76 +86,82 @@ export default function AccountModal({
             aria-describedby="modal-modal-description"
 
         >
-            <Box sx={style}>
+            <motion.div
+                initial={{ opacity: 0, translateY: 470, translateX: 0, scale: 1 }}
+                animate={{ opacity: 1, translateY: 470, translateX: 0, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0 }}
+            >
+                <Box sx={style}>
 
-                <Typography variant="h4" gutterBottom style={{ marginBottom: 40, marginTop: 10 }}>
-                    My Bookings
-                </Typography>
+                    <Typography variant="h4" gutterBottom style={{ marginBottom: 40, marginTop: 10 }}>
+                        My Bookings
+                    </Typography>
 
-                {loading ? (
-                    <Box display="flex" justifyContent="center" alignItems="center" height="100%">
-                        <CircularProgress />
-                    </Box>
-                ) : bookings.length > 0 ? (
-                    bookings.map(booking => {
-                        const totalPrice = (parseFloat(booking.pricePerNight) * booking.nights).toFixed(2);
+                    {loading ? (
+                        <Box display="flex" justifyContent="center" alignItems="center" height="100%">
+                            <CircularProgress />
+                        </Box>
+                    ) : bookings.length > 0 ? (
+                        bookings.map(booking => {
+                            const totalPrice = (parseFloat(booking.pricePerNight) * booking.nights).toFixed(2);
 
-                        return (
-                            <Card
-                                key={booking.id} sx={{ display: 'flex', mb: 2, borderRadius: 7 }}
+                            return (
+                                <Card
+                                    key={booking.id} sx={{ display: 'flex', mb: 2, borderRadius: 7 }}
 
-                            >
-                                <CardMedia
-                                    component="img"
-                                    sx={{ width: 151, minHeight: 160, borderRadius: '7px 0 0 7px' }}
-                                    image={booking.mainImage}
-                                    alt={booking.title}
-                                />
-                                <Box style={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    justifyContent: 'center', // Centers vertically
-                                    alignItems: 'center',     // Centers horizontally (optional)
-                                    height: '100%'
-                                }}>
-                                    <div style={{
-                                        display: 'flex', minHeight: 160
+                                >
+                                    <CardMedia
+                                        component="img"
+                                        sx={{ width: 151, minHeight: 160, borderRadius: '7px 0 0 7px' }}
+                                        image={booking.mainImage}
+                                        alt={booking.title}
+                                    />
+                                    <Box style={{
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        justifyContent: 'center', // Centers vertically
+                                        alignItems: 'center',     // Centers horizontally (optional)
+                                        height: '100%'
                                     }}>
-                                        <div style={{ padding: '3px 10px 3px 30px', width: 310 }}>
-                                            <Typography component="h5" variant="h5">
-                                                {booking.title}
-                                            </Typography>
-                                            <Typography variant="subtitle1" color="text.secondary">
-                                                {booking.address}, {booking.city}
-                                            </Typography>
-                                            <Typography variant="body2">
-                                                Dates: {booking.startDate} - {booking.endDate} <br />
-                                                Nights: {booking.nights} <br />
-                                                Total Price: £{totalPrice}
-                                            </Typography>
-                                        </div>
-                                        <Box
-                                            // style={{ backgroundColor: 'lime' }}
-                                            sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', p: 1 }}
-                                        >
-                                            <Button
-                                                variant="contained"
-                                                color="error"
-                                                onClick={() => handleCancelBooking(booking.id)}
-                                                style={{ borderRadius: 30 }}
+                                        <div style={{
+                                            display: 'flex', minHeight: 160
+                                        }}>
+                                            <div style={{ padding: '3px 10px 3px 30px', width: 366}}>
+                                                <Typography component="h5" variant="h5">
+                                                    {booking.title}
+                                                </Typography>
+                                                <Typography variant="subtitle1" color="text.secondary">
+                                                    {booking.address}, {booking.city}
+                                                </Typography>
+                                                <Typography variant="body2">
+                                                    Dates: {booking.startDate} - {booking.endDate} <br />
+                                                    Nights: {booking.nights} <br />
+                                                    Total Price: £{totalPrice}
+                                                </Typography>
+                                            </div>
+                                            <Box
+                                                // style={{ backgroundColor: 'lime' }}
+                                                sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', p: 1 }}
                                             >
-                                                Cancel Booking
-                                            </Button>
-                                        </Box>
-                                    </div>
-                                </Box>
-                            </Card>
-                        );
-                    })
-                ) : (
-                    <Typography variant="body1">No bookings found for {name}.</Typography>
-                )}
-            </Box>
+                                                <Button
+                                                    variant="contained"
+                                                    color="error"
+                                                    onClick={() => handleCancelBooking(booking.id)}
+                                                    style={{ borderRadius: 30 }}
+                                                >
+                                                    Cancel
+                                                </Button>
+                                            </Box>
+                                        </div>
+                                    </Box>
+                                </Card>
+                            );
+                        })
+                    ) : (
+                        <Typography variant="body1">No bookings found for {name}.</Typography>
+                    )}
+                </Box>
+            </motion.div>
         </Modal >
     );
 }
