@@ -207,7 +207,7 @@ export default function Index() {
                             // style={{ marginLeft: 20 }}
                             variant="outlined" startIcon={<PersonIcon />}
                         >
-                            <div>{isLogin ? 'Log Out' : 'My Account'}</div>
+                            <div>{isLogin ? 'LogOut' : 'LogIn'}</div>
                             <div
                                 style={{
                                     fontSize: 10,
