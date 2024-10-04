@@ -49,11 +49,8 @@ export default function Index() {
         router.push('/myAccount'); // Navigate to the home page ("/")
     };
 
-
     useEffect(() => {
-        if (isLogin) {
-            handleClose();
-        }
+        if (isLogin) {  handleClose();}
     }, [isLogin]);
 
     const handleOpen = () => setOpen(true);
@@ -90,8 +87,6 @@ export default function Index() {
         }, 800);
     }, []);
 
-
-
     return (
         <div
             style={{
@@ -99,7 +94,6 @@ export default function Index() {
                 minHeight: 480
             }}
         >
-
             {BorderLinearProgress_Visible && <BorderLinearProgress />}
 
             <Box sx={{ flexGrow: 1 }}>
@@ -124,7 +118,6 @@ export default function Index() {
                             alt="Logo"
                         />
                     </motion.div>
-
 
                     <motion.div
                         className={styles.custom_date_picker_container}
@@ -155,7 +148,6 @@ export default function Index() {
                                     position: 'absolute', top: 12, left: 140,
                                     cursor: 'pointer',
                                 }}
-
                             >
                                 <Button
                                     onClick={handleOpenAccount}
@@ -163,7 +155,6 @@ export default function Index() {
                                     My account
                                 </Button>
                             </motion.div>
-
                         )}
                     </AnimatePresence>
 
@@ -190,7 +181,6 @@ export default function Index() {
                             }}
                         >
                             <Image
-
                                 src="/rentout.svg"
                                 width={80}
                                 height={36}
@@ -232,10 +222,7 @@ export default function Index() {
             <ModalAccount
                 handleCloseAccount={handleCloseAccount}
                 openAccount={openAccount}
-                // isLogin={isLogin}
-                // setIsLogin={setIsLogin}
-                name={name} // Pass the setName function to ModalLogin
-            // setName={setName} // Pass the setName function to ModalLogin
+                name={name} 
             />
 
 
