@@ -11,7 +11,10 @@ import InputAdornment from '@mui/material/InputAdornment';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 export default function MainButtons({ calendarIsVisible, setCalendarIsVisible,
-     destination, setDestination
+     destination, setDestination,
+     handleSearchResultsOpen, handleSearchResultsClose,
+     handle_NOT_ShowAll,
+     searchResults
 }) {
      // State to store the destination
      //     const [destination, setDestination] = useState('');
@@ -26,6 +29,13 @@ export default function MainButtons({ calendarIsVisible, setCalendarIsVisible,
           setDestination(event.target.value); // Update the destination state with the input value
      };
 
+     const goHome = () => {
+          if (searchResults) {
+               handleSearchResultsClose(true); // Update the destination state with the input value
+          }
+     };
+
+
      return (
           <div style={{ background: '' }}>
                <Box
@@ -37,8 +47,10 @@ export default function MainButtons({ calendarIsVisible, setCalendarIsVisible,
                               m: 1,
                          },
                     }}
+                    onClick={goHome}
                >
                     <div
+                         onClick={handle_NOT_ShowAll}
                          style={{
                               transform: `scale(${calendarIsVisible ? 0.75 : 1}) translateY(${calendarIsVisible ? '-30px' : '0'})`,
                               transition: 'transform 0.35s ease-in-out', // Add transition for smooth scaling and movement
@@ -58,25 +70,31 @@ export default function MainButtons({ calendarIsVisible, setCalendarIsVisible,
                                    variant="standard"
                                    value={destination} // Controlled input: value is tied to the state
                                    onChange={handleDestinationChange} // Update state when the user types
-                                  
+
                               />
 
 
                               <Button
                                    startIcon={<DateRangeRoundedIcon />}
                                    className={styles.button_check_in}
-                                   onClick={toggleCalendarVisibility}
+                                   onClick={() => {
+                                        toggleCalendarVisibility();
+                                        // handleSearchResultsClose();
+                                   }}
                                    disabled={calendarIsVisible}
                                    key="two"
                               >
                                    Check In
                               </Button>
-                              
+
 
                               <Button
                                    startIcon={<SearchRoundedIcon />}
                                    className={styles.button_search}
-                                   onClick={toggleCalendarVisibility}
+                                   onClick={() => {
+                                        toggleCalendarVisibility();
+                                        handleSearchResultsOpen();
+                                   }}
                                    style={{
                                         background: calendarIsVisible ? '#000000' : '#FFFFFF',
                                         color: calendarIsVisible ? '#FFFFFF' : '#000000',
@@ -88,7 +106,7 @@ export default function MainButtons({ calendarIsVisible, setCalendarIsVisible,
                               </Button>
                          </div>
                     </div>
-               </Box>
-          </div>
+               </Box >
+          </div >
      );
 }

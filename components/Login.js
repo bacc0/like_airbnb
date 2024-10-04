@@ -144,8 +144,7 @@ export default function SlotsSignIn({ open, handleClose, isLogin, setIsLogin, na
 
                     if (loggedIn) {
                          setIsLogin(true);  // Set the login state to true
-                         // handleClose(); // Close the modal on successful login
-                         // router.push('/home'); // Redirect to the home page
+                      
                     } else {
                          alert('Invalid email or password. Please try again.'); // Show alert for incorrect login
                     }

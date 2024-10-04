@@ -7,27 +7,21 @@ import styles from '../src/styles/index.module.css'; // Import as a CSS module
 import { AnimatePresence, motion } from 'framer-motion'; // Import motion from Framer Motion
 import Image from 'next/image';
 
-import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import Link from 'next/link'; // Make sure to use Next.js Link
-import CardAdver from '../components/CardAdver';
 import MainButtons from '../components/MainButtons';
 
-import ButtonLogin from '../components/ModalLogin';
 import PersonIcon from '@mui/icons-material/Person';
-import AddHomeIcon from '@mui/icons-material/AddHome';
 
 import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
+
 
 import BorderLinearProgress from '../components/BorderLinearProgress';
 import ModalLogin from '../components/ModalLogin';
 import ModalAccount from '../components/ModalAccount';
 import LoginSuccessful from '../components/LoginSuccessful';
 import InspirationImages from '../components/InspirationImages';
+import PropertySearchList from '../components/PropertySearchList';
 
 export default function Index() {
     const [isLogin, setIsLogin] = useState(false);
@@ -42,6 +36,9 @@ export default function Index() {
     const [BorderLinearProgress_Visible, setBorderLinearProgress_Visible] = useState(true);
     const [open, setOpen] = useState(false);
     const [openAccount, setOpenAccount] = useState(false);
+    const [searchResults, setSearchResults] = useState(false);
+    const [showAll, setShowAll] = useState(false); // Track whether "show all" is clicked
+    const [email, setEmail] = React.useState('');
 
     const router = useRouter(); // For redirection if needed
 
@@ -50,7 +47,7 @@ export default function Index() {
     };
 
     useEffect(() => {
-        if (isLogin) {  handleClose();}
+        if (isLogin) { handleClose(); }
     }, [isLogin]);
 
     const handleOpen = () => setOpen(true);
@@ -59,9 +56,20 @@ export default function Index() {
     const handleOpenAccount = () => setOpenAccount(true);
     const handleCloseAccount = () => setOpenAccount(false);
 
+    const handleSearchResultsOpen = () => setSearchResults(true);
+    const handleSearchResultsClose = () => setSearchResults(false);
+
     const handleLogOut = () => {
         setIsLogin(false);
         setName(''); // Clear the user's name on logout
+    };
+
+    const handleShowAll = (e) => {
+        e.preventDefault(); // Prevent the link from refreshing the page
+        setShowAll(true); // Trigger showing all properties
+    };
+    const handle_NOT_ShowAll = () => {
+        setShowAll(false); // Trigger showing all properties
     };
 
     const handleDateChange = (dates) => {
@@ -106,10 +114,11 @@ export default function Index() {
                 >
                     <motion.div
                         className={styles.custom_date_picker_container}
-                        initial={{ opacity: 0, translateY: 43, translateX: 33, scale: 1 }}
-                        animate={{ opacity: 1, translateY: 43, translateX: 33, scale: 1 }}
+                        initial={{ opacity: 0, translateY: 43, translateX: 0, scale: 1 }}
+                        animate={{ opacity: 1, translateY: 43, translateX: 0, scale: 1 }}
                         transition={{ duration: 0.55, delay: 0 }}
-                        style={{ top: 45, left: 45 }}
+                        style={{ paddingLeft: 33 }}
+                    // 
                     >
                         <Image
                             src="/alibmb2.svg"
@@ -132,6 +141,11 @@ export default function Index() {
                             destination={destination}
                             setDestination={setDestination}
                             isLogin={isLogin}
+                            handleSearchResultsOpen={handleSearchResultsOpen}
+                            handleSearchResultsClose={handleSearchResultsClose}
+
+                            handle_NOT_ShowAll={handle_NOT_ShowAll}
+                            searchResults={searchResults}
                         />
                     </motion.div>
 
@@ -218,11 +232,12 @@ export default function Index() {
                 setIsLogin={setIsLogin}
                 name={name} // Pass the setName function to ModalLogin
                 setName={setName} // Pass the setName function to ModalLogin
+              
             />
             <ModalAccount
                 handleCloseAccount={handleCloseAccount}
                 openAccount={openAccount}
-                name={name} 
+                name={name}
             />
 
 
@@ -234,6 +249,7 @@ export default function Index() {
                         animate={{ opacity: 1, translateY: 68, scale: 1.3 }}
                         exit={{ opacity: 0, translateY: -30 }}
                         transition={{ duration: 0.35, delay: 0.05 }}
+                        style={{ maxWidth: '85%', paddingLeft: '11%' }}
                     >
                         <div className={styles.custom_date_picker}>
                             <DatePicker
@@ -252,13 +268,33 @@ export default function Index() {
                     </motion.div>
                 )
             }
-            <InspirationImages
-                calendarIsVisible={calendarIsVisible}
-                destination={destination}
-                formattedStartDate={formattedStartDate}
-                formattedEndDate={formattedEndDate}
-                lengthOfNights={lengthOfNights}
-            />
+            {
+                searchResults
+                    ?
+                    <PropertySearchList
+                        destination={destination}
+                        handleSearchResultsClose={handleSearchResultsClose}
+                        showAll={showAll}
+                        setShowAll={setShowAll}
+                        handleShowAll={handleShowAll}
+                        handle_NOT_ShowAll={handle_NOT_ShowAll}
+                        isLogin={isLogin}
+                        handleSearchResultsOpen={handleSearchResultsOpen}
+                        formattedStartDate={formattedStartDate}
+                        formattedEndDate={formattedEndDate}
+                        lengthOfNights={lengthOfNights}
+                        calendarIsVisible={calendarIsVisible}
+                    />
+                    :
+                    <InspirationImages
+                        calendarIsVisible={calendarIsVisible}
+                        destination={destination}
+                        formattedStartDate={formattedStartDate}
+                        formattedEndDate={formattedEndDate}
+                        lengthOfNights={lengthOfNights}
+                    />
+
+            }
 
         </div >
     );
