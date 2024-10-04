@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 
 const PropertySearchList = ({
+     name,
      destination, handleSearchResultsClose, showAll, setShowAll, handleShowAll, handle_NOT_ShowAll,
      isLogin, handleSearchResultsOpen,
      formattedStartDate,
@@ -87,26 +88,26 @@ const PropertySearchList = ({
                          animate={{ opacity: 1, translateY: 0, scale: 1 }}
                          transition={{ duration: 0.35, delay: 0.6 }}
 
-                    >No properties available in {destination}. Please enter a valid destination or <a 
-                    style={{
-                         fontSize: 20,
-                         textDecoration: 'none',
-                         padding: 12,
-                         margin: 8,
-                         border: '0.1px solid #FF385C',
-                         borderRadius: 30,
-                         color: '#FF385C'
-                    }}
-                    href="#" onClick={handleShowAll}>click here to see all properties</a>
+                    >No properties available in {destination}. Please enter a valid destination or <a
+                         style={{
+                              fontSize: 20,
+                              textDecoration: 'none',
+                              padding: 12,
+                              margin: 8,
+                              border: '0.1px solid #FF385C',
+                              borderRadius: 30,
+                              color: '#FF385C'
+                         }}
+                         href="#" onClick={handleShowAll}>click here to see all properties</a>
                     </motion.p>
                ) : filteredProperties.length > 0 ? (
 
-                    <motion.ul 
-                    initial={{ opacity: 0, translateY: -10, scale: 1.1 }}
-                    animate={{ opacity: 1, translateY: 0, scale: 1 }}
-                    transition={{ duration: 0.35, delay: 0.9 }}
+                    <motion.ul
+                         initial={{ opacity: 0, translateY: -10, scale: 1.1 }}
+                         animate={{ opacity: 1, translateY: 0, scale: 1 }}
+                         transition={{ duration: 0.35, delay: 0.9 }}
 
-                    style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', padding: 0 }}>
+                         style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', padding: 0 }}>
                          {filteredProperties.map((property) => (
                               <li key={property.id} style={{ listStyle: 'none' }}>
                                    <Card
@@ -139,7 +140,7 @@ const PropertySearchList = ({
                                                   <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                                                        Price per night: £{property.PricePerNight}
                                                   </Typography>
-                                                  
+
                                              </CardContent>
                                         </CardActionArea>
                                    </Card>
@@ -166,35 +167,36 @@ const PropertySearchList = ({
                                         color: '#FF385C'
                                    }}
                                    href="#" onClick={handleShowAll}
-                                   >
-                                        click here to see all properties
-                                   </a><
+                              >
+                                   click here to see all properties
+                              </a><
                                         /span>
-                         <span
-                              style={{
-                                   position: 'relative',
-                                   top: 20,
-                              }}
-                         >  Or
-                              <a
+                              <span
                                    style={{
-
-                                        fontSize: 20,
-                                        textDecoration: 'none',
-                                        padding: 12,
-
-                                        margin: 8,
-                                        border: '0.1px solid #FF385C',
-                                        borderRadius: 30,
-                                        color: '#FF385C'
+                                        position: 'relative',
+                                        top: 20,
                                    }}
-                                   href="#" onClick={handleSearchResultsClose}>go to the home page</a>
-                         </span>
+                              >  Or
+                                   <a
+                                        style={{
+
+                                             fontSize: 20,
+                                             textDecoration: 'none',
+                                             padding: 12,
+
+                                             margin: 8,
+                                             border: '0.1px solid #FF385C',
+                                             borderRadius: 30,
+                                             color: '#FF385C'
+                                        }}
+                                        href="#" onClick={handleSearchResultsClose}>go to the home page</a>
+                              </span>
                     </p>
                )}
 
                {selectedProperty &&
                     <ModalProperty
+                         name={name}
                          property={selectedProperty}
                          isLogin={isLogin}
                          onClose={handleCloseModal}

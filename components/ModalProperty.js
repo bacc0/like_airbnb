@@ -10,6 +10,7 @@ import LoginSuccessful from './LoginSuccessful';
 
 
 const ModalProperty = ({
+    name,
     property,
     onClose,
     isLogin,
@@ -45,7 +46,7 @@ const ModalProperty = ({
     };
 
     const addReservationToUser = async (property, startDate, endDate, nights) => {
-        const user = 'Veselin'; // The currently logged-in user
+        // const user = 'Veselin'; // The currently logged-in user
         const url = `https://airbnb-d4964-default-rtdb.europe-west1.firebasedatabase.app/Reservations.json`;
 
         try {
@@ -87,7 +88,7 @@ const ModalProperty = ({
                 startDate: startDate,
                 endDate: endDate,
                 nights: nights,
-                customerName: user
+                customerName: name
             };
 
             const response = await fetch(url, {

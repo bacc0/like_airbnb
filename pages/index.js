@@ -166,7 +166,7 @@ export default function Index() {
                                 <Button
                                     onClick={handleOpenAccount}
                                     className={styles.button_my_account}>
-                                    My account
+                                    My Bookings
                                 </Button>
                             </motion.div>
                         )}
@@ -232,7 +232,7 @@ export default function Index() {
                 setIsLogin={setIsLogin}
                 name={name} // Pass the setName function to ModalLogin
                 setName={setName} // Pass the setName function to ModalLogin
-              
+
             />
             <ModalAccount
                 handleCloseAccount={handleCloseAccount}
@@ -272,6 +272,7 @@ export default function Index() {
                 searchResults
                     ?
                     <PropertySearchList
+                        name={name}
                         destination={destination}
                         handleSearchResultsClose={handleSearchResultsClose}
                         showAll={showAll}
