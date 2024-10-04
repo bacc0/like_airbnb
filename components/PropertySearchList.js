@@ -139,6 +139,7 @@ const PropertySearchList = ({
                                                   <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                                                        Price per night: £{property.PricePerNight}
                                                   </Typography>
+                                                  
                                              </CardContent>
                                         </CardActionArea>
                                    </Card>

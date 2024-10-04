@@ -193,8 +193,26 @@ const ModalProperty = ({
                     }}
                 >
                     <p>
-                        <span style={{ paddingRight: 7, color: "#FF385C" }}> Price per night: </span>
-                        <span style={{ fontWeight: 600 }}>  £{property.PricePerNight}</span></p>
+                        <span style={{ paddingRight: 7, color: "#FF385C" }}>
+                            Price per night:
+                        </span>
+
+                        <span style={{ fontWeight: 600 }}>  £{property.PricePerNight}</span>
+
+                        {lengthOfNights > 0 &&
+                            <>
+                                <span style={{ paddingRight: 7, paddingLeft: '1.5em', color: "#FF385C" }}>
+                                    Total Price:
+                                </span>
+                                <span style={{ fontWeight: 600, fontSize: 26 }}>
+                                    £{property.PricePerNight * lengthOfNights}
+                                </span>
+                            </>
+                        }
+
+                    </p>
+
+
                     <Button
                         onClick={handleButtonReserve}
                         style={{
@@ -231,7 +249,9 @@ const ModalProperty = ({
                                 borderRadius: 60
                             }}
 
-                        ><CloseIcon /></div>
+                        >
+                            <CloseIcon />
+                        </div>
                     </div>
                 )}
 
@@ -333,7 +353,7 @@ const enlargedImageStyle = {
 
     minWidth: '750px',
     minHeight: '750px',
-    
+
     objectFit: 'cover',
     borderRadius: 20,
     boxShadow: '0 0 50px #00000044'
