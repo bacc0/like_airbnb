@@ -181,23 +181,26 @@ export default function Index() {
 
                     <AnimatePresence>
                         {isLogin && (
-                            <motion.div
-                                initial={{ opacity: 0, translateY: 43, translateX: 33, scale: 0 }}
-                                animate={{ opacity: 1, translateY: 43, translateX: 33, scale: 1 }}
-                                transition={{ duration: 0.3, delay: 0.7, type: "spring", stiffness: 200 }}
-                                exit={{ opacity: 0, scale: 0 }}
-                                style={{
-                                    position: 'absolute', top: 12, left: 140,
-                                    cursor: 'pointer',
-                                }}
+                          
+                                <motion.div
+                                    initial={{ opacity: 0, translateY: 43, translateX: 33, scale: 0 }}
+                                    animate={{ opacity: 1, translateY: 43, translateX: 33, scale: 1 }}
+                                    transition={{ duration: 0.3, delay: .5, type: "spring", stiffness: 200 }}
+                                    exit={{ opacity: 0, scale: 0 }}
+                                    
+                                    style={{
+                                        position: 'absolute', top: 12, left: 140,
+                                        cursor: 'pointer',
+                                    }}
 
-                            >
-                                <Button
-                                    onClick={handleOpenAccount}
-                                    className={styles.button_my_account}>
-                                    My account
-                                </Button>
-                            </motion.div>
+                                >
+                                    <Button
+                                        onClick={handleOpenAccount}
+                                        className={styles.button_my_account}>
+                                        My account
+                                    </Button>
+                                </motion.div>
+                         
                         )}
                     </AnimatePresence>
 
