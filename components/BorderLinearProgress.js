@@ -11,7 +11,7 @@ const Example = ({ type, color }) => (
                // width: '50%',  
                zIndex: 100,
                background: '#ffffffcc',
-               background: `radial-gradient(circle, #ffffffbb 50%, #ffffff00 50%)`,
+               background: `radial-gradient(circle, #ffffff44 36%, #ffffff00 36%)`,
                borderRadius: 500
                // transform: 'scale(2)'       // Control the width of the stack or progress
           }}
