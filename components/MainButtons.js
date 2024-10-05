@@ -47,7 +47,7 @@ export default function MainButtons({ calendarIsVisible, setCalendarIsVisible,
                               m: 1,
                          },
                     }}
-                    // onClick={goHome}
+               // onClick={goHome}
                >
                     <div
                          onClick={handle_NOT_ShowAll}
@@ -61,7 +61,7 @@ export default function MainButtons({ calendarIsVisible, setCalendarIsVisible,
                               style={{
                                    boxShadow: `0 0 ${calendarIsVisible ? 0 : 10}px #00000033`,
                               }}
-                              // onClick={goHome}
+                         // onClick={goHome}
                          >
                               {/* TextField to capture the destination */}
                               <TextField
@@ -79,8 +79,11 @@ export default function MainButtons({ calendarIsVisible, setCalendarIsVisible,
                                    startIcon={<DateRangeRoundedIcon />}
                                    className={styles.button_check_in}
                                    onClick={() => {
-                                        toggleCalendarVisibility();
+
                                         goHome()
+                                        if (!searchResults) {
+                                             toggleCalendarVisibility();
+                                        }
                                         // handleSearchResultsClose();
                                    }}
                                    disabled={calendarIsVisible}

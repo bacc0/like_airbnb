@@ -16,7 +16,7 @@ import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
 
 
-import BorderLinearProgress from '../components/BorderLinearProgress';
+// import BorderLinearProgress from '../components/BorderLinearProgress';
 import LoginSuccessful from '../components/LoginSuccessful';
 import InspirationImages from '../components/InspirationImages';
 import PropertySearchList from '../components/PropertySearchList';
@@ -37,7 +37,7 @@ export default function Index() {
     const [formattedEndDate, setFormattedEndDate] = useState('');
     const [lengthOfNights, setLengthOfNights] = useState(0);
     const [calendarIsVisible, setCalendarIsVisible] = useState(false);
-    const [BorderLinearProgress_Visible, setBorderLinearProgress_Visible] = useState(true);
+    // const [BorderLinearProgress_Visible, setBorderLinearProgress_Visible] = useState(true);
     const [open, setOpen] = useState(false);
 
     const [openAccount, setOpenAccount] = useState(false);
@@ -103,11 +103,11 @@ export default function Index() {
         }
     };
 
-    useEffect(() => {
-        setTimeout(() => {
-            setBorderLinearProgress_Visible(false);
-        }, 800);
-    }, []);
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setBorderLinearProgress_Visible(false);
+    //     }, 800);
+    // }, []);
 
     return (
         <div
@@ -116,7 +116,7 @@ export default function Index() {
                 minHeight: 480
             }}
         >
-            {BorderLinearProgress_Visible && <BorderLinearProgress />}
+            {/* {BorderLinearProgress_Visible && <BorderLinearProgress />} */}
 
             <Box sx={{ flexGrow: 1 }}>
                 <AppBar style={{
@@ -254,7 +254,7 @@ export default function Index() {
                 openAccount={openAccount}
                 name={name}
             />
-             <ModalOwnerBookings
+            <ModalOwnerBookings
                 handleCloseOwner={handleCloseOwner}
                 openOwnerAccount={openOwnerAccount}
                 name={name}
@@ -309,10 +309,10 @@ export default function Index() {
                     :
                     <InspirationImages
                         calendarIsVisible={calendarIsVisible}
-                        destination={destination}
-                        formattedStartDate={formattedStartDate}
-                        formattedEndDate={formattedEndDate}
-                        lengthOfNights={lengthOfNights}
+                        // destination={destination}
+                        // formattedStartDate={formattedStartDate}
+                        // formattedEndDate={formattedEndDate}
+                        // lengthOfNights={lengthOfNights}
                     />
 
             }

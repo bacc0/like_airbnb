@@ -43,6 +43,7 @@ function CustomEmailField({ email, setEmail }) {
 }
 
 function CustomPasswordField({ password, setPassword }) {
+
      const [showPassword, setShowPassword] = React.useState(false);
 
      const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -108,9 +109,9 @@ function CustomButton({ handleLogin }) {
 function ForgotPasswordLink() {
      return (
           <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', marginTop: '10px' }}>
-               <Link href="/" variant="body2">
+               {/* <Link href="/" variant="body2">
                     Forgot password?
-               </Link>
+               </Link> */}
                <Link href="/signUp" variant="body2">
                     Sign up
                </Link>
@@ -118,9 +119,11 @@ function ForgotPasswordLink() {
      );
 }
 
-export default function SlotsSignIn({ open, handleClose, isLogin, setIsLogin, name, setName }) {
+
+
+export default function SlotsSignIn({ isLogin, setIsLogin, setName }) {
+     
      const theme = useTheme();
-     const router = useRouter(); // Initialize useRouter for redirection
      const [email, setEmail] = React.useState('');
      const [password, setPassword] = React.useState('');
 
@@ -157,11 +160,6 @@ export default function SlotsSignIn({ open, handleClose, isLogin, setIsLogin, na
      return (
           <AppProvider theme={theme}>
                <SignInPage
-                    // signIn={(provider, formData) =>
-                    //      alert(
-                    //           `Sign In Successful! Welcome back ${email}`,
-                    //      )
-                    // }
                     slots={{
                          emailField: () => <CustomEmailField email={email} setEmail={setEmail} />,
                          passwordField: () => <CustomPasswordField password={password} setPassword={setPassword} />,
@@ -171,6 +169,7 @@ export default function SlotsSignIn({ open, handleClose, isLogin, setIsLogin, na
                     providers={providers}
                />
 
+               
                {/* Display login status */}
                <div style={{ textAlign: 'center', marginTop: '20px', color: '#FF385C' }}>
                     {isLogin ? 'Login successful!' : 'Not logged in'}

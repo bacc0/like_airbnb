@@ -45,7 +45,7 @@ export default function BasicModal({
                         name={name}
                         setName={setName}
                     />
-                    <h1>{isLogin ? 'yes' : 'no'}</h1>
+                    {/* <h1>{isLogin ? 'yes' : 'no'}</h1> */}
                 </Box>
             </Modal>
         </div>
