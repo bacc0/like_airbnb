@@ -107,12 +107,21 @@ export default function ModalUserBookings({
 
                             return (
                                 <Card
-                                    key={booking.id} sx={{ display: 'flex', mb: 2, borderRadius: 7 }}
-
+                                    key={booking.id} sx={{ display: 'flex', mb: 2, borderRadius: 5}}
+                                    style={{ boxShadow: '0 0 0', }}
                                 >
                                     <CardMedia
                                         component="img"
-                                        sx={{ width: 151, minHeight: 160, borderRadius: '7px 0 0 7px' }}
+                                        sx={{
+                                            width: 160, 
+                                            height: 160, 
+                                            minHeight: 160,
+                                            minWidth: 160,
+                                            borderRadius: 5,
+                                            backgroundColor: '#f5f5f5',
+                                            border: '0.1px solid #e0e0e0'
+
+                                        }}
                                         image={booking.mainImage}
                                         alt={booking.title}
                                     />
@@ -126,7 +135,7 @@ export default function ModalUserBookings({
                                         <div style={{
                                             display: 'flex', minHeight: 160
                                         }}>
-                                            <div style={{ padding: '3px 10px 3px 30px', width: 366}}>
+                                            <div style={{ padding: '3px 10px 3px 30px', width: 366 }}>
                                                 <Typography component="h5" variant="h5">
                                                     {booking.title}
                                                 </Typography>

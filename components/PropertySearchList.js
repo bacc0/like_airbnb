@@ -117,14 +117,8 @@ const PropertySearchList = ({
                                              minWidth: 310,
                                              minHeight: 310,
                                              borderRadius: 20,
-
+                                             boxShadow: '0 0 0',
                                              margin: '0 4px',
-                                             // backgroundImage: `url(${property['Front Image']})`, // Add background image
-                                             // backgroundSize: 'cover',
-                                             // backgroundPosition: 'center', // Center the background image
-                                             // imageRendering: 'pixelated', // Apply pixelated effect
-                                             // filter: 'contrast(120%)',
-                                             
 
                                         }}
                                         onClick={() => handlePropertyClick(property)}
@@ -132,13 +126,15 @@ const PropertySearchList = ({
                                         <CardActionArea>
                                              <CardMedia
                                                   component="img"
-                                                  height="192"
+                                                  height="196"
                                                   image={property['Front Image']}
                                                   alt={property.Address.title}
                                                   style={{
                                                        //   margin: '0 6px'
-                                                       // borderRadius: 18
+                                                       borderRadius: 20,
                                                        filter: 'contrast(120%)',
+                                                       border: '0.1px solid #bdbdbd',
+                                                       
                                                   }}
                                              />
                                              <CardContent>
@@ -190,8 +186,8 @@ const PropertySearchList = ({
                                         position: 'relative',
                                         top: 20,
                                    }}
-                              >  
-                              {/* Or
+                              >
+                                   {/* Or
                                    <a
                                         style={{
 
