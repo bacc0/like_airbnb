@@ -74,7 +74,7 @@ const PropertySearchList = ({
                // Hide the progress bar after 0.3 seconds
                const timer = setTimeout(() => {
                     setShowProgress(false);
-               }, 1000); // 0.3 seconds
+               }, 1100); // 0.3 seconds
 
                // Cleanup function to clear the timeout
                return () => clearTimeout(timer);

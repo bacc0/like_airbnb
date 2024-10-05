@@ -15,7 +15,7 @@ const InspirationImages = ({
      useEffect(() => {
           setTimeout(() => {
                setBorderLinearProgress_Visible(false);
-          }, 800);
+          }, 1100);
      }, []);
 
      const cards1 = (

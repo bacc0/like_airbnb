@@ -20,6 +20,7 @@
     "react": "latest",
     "react-datepicker": "^7.4.0",
     "react-dom": "latest",
+    "react-loading": "^2.0.3",
     "react-redux": "^9.1.2",
     "react-responsive-carousel": "^3.2.23"
   },
