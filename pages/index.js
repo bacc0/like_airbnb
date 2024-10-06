@@ -47,6 +47,11 @@ export default function Index() {
     const [showAll, setShowAll] = useState(false); // Track whether "show all" is clicked
     const [email, setEmail] = React.useState('');
 
+    const [isHovered_My_bookings, setIsHovered_My_bookings] = useState(false);
+    const [isHovered_Login, setIsHovered_Login] = useState(false);
+
+
+
     const router = useRouter(); // For redirection if needed
 
     const openMyAccount = () => {
@@ -108,6 +113,20 @@ export default function Index() {
     //         setBorderLinearProgress_Visible(false);
     //     }, 800);
     // }, []);
+
+    const handleMouseEnter_My_bookings = () => {
+        setIsHovered_My_bookings(true);
+    };
+    const handleMouseLeave_My_bookings = () => {
+        setIsHovered_My_bookings(false);
+    };
+
+    const handleMouseEnter_Login = () => {
+        setIsHovered_Login(true);
+    };
+    const handleMouseLeave_Login = () => {
+        setIsHovered_Login(false);
+    };
 
     return (
         <div
@@ -179,7 +198,19 @@ export default function Index() {
                             >
                                 <Button
                                     onClick={handleOpenAccount}
-                                    className={styles.button_my_account}>
+                                    className={styles.button_my_account}
+
+                                    style={{
+                                        boxShadow: `0 0 ${isHovered_My_bookings ? 0 : 10}px #CCCCCC`,
+                                        border: `0.3px solid ${isHovered_My_bookings ? '#000000' : '#FF385C'}`,
+                                        background: isHovered_My_bookings ?'#EFEFEF' : '#fff',
+
+                                        transition: 'box-shadow 0.3s ease, border 0.3s ease, background 0.3s ease',
+                                    }}
+
+                                    onMouseEnter={handleMouseEnter_My_bookings}
+                                    onMouseLeave={handleMouseLeave_My_bookings}
+                                >
                                     My Bookings
                                 </Button>
                             </motion.div>
@@ -197,9 +228,15 @@ export default function Index() {
                             right: 45,
                             display: 'flex',
                             alignItems: 'center',
-                            boxShadow: '0 0 10px #bdbdbd',
-                            borderRadius: 36
+                            borderRadius: 36,
+
+                            boxShadow: `0 0 ${isHovered_Login ? 0 : 10}px #CCCCCC`,
+                            transition: 'box-shadow 0.3s ease',
+
                         }}
+
+                        onMouseEnter={handleMouseEnter_Login}
+                        onMouseLeave={handleMouseLeave_Login}
                     >
                         <div
                             className={styles.button_list_item}
@@ -309,10 +346,10 @@ export default function Index() {
                     :
                     <InspirationImages
                         calendarIsVisible={calendarIsVisible}
-                        // destination={destination}
-                        // formattedStartDate={formattedStartDate}
-                        // formattedEndDate={formattedEndDate}
-                        // lengthOfNights={lengthOfNights}
+                    // destination={destination}
+                    // formattedStartDate={formattedStartDate}
+                    // formattedEndDate={formattedEndDate}
+                    // lengthOfNights={lengthOfNights}
                     />
 
             }

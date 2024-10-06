@@ -16,10 +16,17 @@ export default function MainButtons({ calendarIsVisible, setCalendarIsVisible,
      handle_NOT_ShowAll,
      searchResults
 }) {
-     // State to store the destination
-     //     const [destination, setDestination] = useState('');
 
-     // Function to toggle calendar visibility
+     const [isHovered, setIsHovered] = useState(false);
+
+     const handleMouseEnter = () => {
+          setIsHovered(true);
+     };
+
+     const handleMouseLeave = () => {
+          setIsHovered(false);
+     };
+
      const toggleCalendarVisibility = () => {
           setCalendarIsVisible((prev) => !prev);
      };
@@ -59,9 +66,12 @@ export default function MainButtons({ calendarIsVisible, setCalendarIsVisible,
                          <div
                               className={styles.button_container}
                               style={{
-                                   boxShadow: `0 0 ${calendarIsVisible ? 0 : 10}px #00000033`,
+                                   boxShadow: `0 0 ${calendarIsVisible || isHovered ? 0 : 10}px #00000033`,
+                                   transition: 'box-shadow 0.3s ease', // Smooth transition for the box-shadow change
                               }}
-                         // onClick={goHome}
+                              onMouseEnter={handleMouseEnter}
+                              onMouseLeave={handleMouseLeave}
+
                          >
                               {/* TextField to capture the destination */}
                               <TextField

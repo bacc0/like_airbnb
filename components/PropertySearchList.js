@@ -25,6 +25,16 @@ const PropertySearchList = ({
      const [filteredProperties, setFilteredProperties] = useState([]);
      const [selectedProperty, setSelectedProperty] = useState(null); // State to track selected property for the modal
      const [showProgress, setShowProgress] = useState(false);
+
+     const [isHovered, setIsHovered] = useState(false);
+
+     const handleMouseEnter = () => {
+          setIsHovered(true);
+     };
+
+     const handleMouseLeave = () => {
+          setIsHovered(false);
+     };
      // Fetch property data from Firebase
      useEffect(() => {
           fetch('https://airbnb-d4964-default-rtdb.europe-west1.firebasedatabase.app/Available%20Properties.json')
@@ -179,7 +189,7 @@ const PropertySearchList = ({
                                                        }}
                                                   >
                                                        <Typography gutterBottom variant="h5" component="div"
-                                                       className={styles.card_content_title}>
+                                                            className={styles.card_content_title}>
                                                             {property.Address.title}
                                                        </Typography>
 
@@ -197,41 +207,68 @@ const PropertySearchList = ({
                               ))}
                          </motion.ul>
                     ) : (
-                         !showAll && <p>
-                              <div>  No properties available.</div>
+                         !showAll &&
+                         <p
+                              style={{
+                                   display: 'flex',
+                                   justifyContent: 'center', // Centers horizontally
+                                   alignItems: 'center',     // Centers vertically
+                                   height: '50vh',          // Ensures it takes up the full viewport heigh
+                              }}
+                         >
+                              <div1
+                                   style={{
+                                        position: 'absolute',
+                                        top: 150,
+                                        fontSize: 22,
+
+                                   }}
+                              >  No properties available.</div1>
                               <span
                                    style={{
                                         position: 'relative',
                                         top: 20,
+                                        marginLeft: 20,
+
                                    }}
                               >Please enter a valid destination or
-
+                                   <div />
                                    <Button
                                         style={{
                                              position: 'relative',
                                              top: 5,
                                              fontSize: 16,
+                                             height: 60,
+                                             width: 340,
                                              textDecoration: 'none',
                                              padding: 12,
-                                             margin: 8,
-                                             marginLeft: 20,
-                                             border: '0.1px solid #FF385C',
+                                             marginTop: 40,
+                                             marginLeft: -50,
                                              borderRadius: 30,
                                              color: '#FF385C',
-                                             marginBottom: 20
+                                             
+                                             border: isHovered ? '0.1px solid #000000' :'0.1px solid #FF385C',
+
+                                             background: isHovered ? '#FFF9F9' : '#ffffff',
+                                             boxShadow: `0 0 ${isHovered ? 0 : 10}px #00000033`, 
+                                             
+                                             transition: 'background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease,', 
                                         }}
-                                        href="#" onClick={handleShowAll}
+                                        href="#"
+                                        onClick={handleShowAll}
+                                        onMouseEnter={handleMouseEnter}
+                                        onMouseLeave={handleMouseLeave}
                                    >
                                         click here to see all properties
-                                   </Button><
-                                        /span>
-                                   <span
-                                        style={{
-                                             position: 'relative',
-                                             top: 20,
-                                        }}
-                                   >
-                                        {/* Or
+                                   </Button>
+                              </span>
+                              <span
+                                   style={{
+                                        position: 'relative',
+                                        top: 20,
+                                   }}
+                              >
+                                   {/* Or
                                    <a
                                         style={{
 
@@ -245,8 +282,9 @@ const PropertySearchList = ({
                                              color: '#FF385C'
                                         }}
                                         href="#" onClick={handleSearchResultsClose}>go to the home page</a> */}
-                                   </span>
+                              </span>
                          </p>
+
                     )}
                     <div style={{ minHeight: 200 }} />
 
