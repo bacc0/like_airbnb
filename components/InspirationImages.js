@@ -92,7 +92,7 @@ const InspirationImages = ({ calendarIsVisible }) => {
                          display: 'flex',
                          justifyContent: 'center',
                          background: '#ffffff',
-                         marginTop: 120,
+                         marginTop: 200,
                     }}
                >
                     <motion.div
@@ -123,7 +123,7 @@ const InspirationImages = ({ calendarIsVisible }) => {
                          <motion.div
                               className={styles.custom_date_picker_container}
                               initial={{ opacity: 0, translateY: calendarIsVisible ? 20 : 80, scale: 1.15 }}
-                              animate={{ opacity: 1, translateY: 70, scale: 1 }}
+                              animate={{ opacity: 1, translateY: 60, scale: 1 }}
                               transition={{ duration: 0.6, delay: calendarIsVisible ? 0.1 : 0.63 }}
                               style={{ position: 'relative', top: -80, transition: 'top 0.35s ease' }}
                          >
