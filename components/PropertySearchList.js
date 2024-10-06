@@ -8,6 +8,9 @@ import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 import Button from '@mui/material/Button';
 import BorderLinearProgress from './BorderLinearProgress'
+import styles from '../src/styles/index.module.css';
+
+
 
 const PropertySearchList = ({
      name,
@@ -139,36 +142,51 @@ const PropertySearchList = ({
                                                   borderRadius: 20,
                                                   boxShadow: '0 0 0',
                                                   margin: '0 4px',
-
+                                                  backgroundImage: `url('${property['Front Image']}')`,
+                                                  backgroundRepeat: 'no-repeat',
+                                                  backgroundPosition: 'center center',
+                                                  backgroundSize: 'cover',
+                                                  // border: '1px solid #fff',
+                                                  // backgroundSize: '180%', 
 
                                              }}
                                              onClick={() => handlePropertyClick(property)}
                                         >
                                              <CardActionArea>
                                                   <CardMedia
-                                                       component="img"
-                                                       height="196"
-                                                       image={property['Front Image']}
-                                                       alt={property.Address.title}
+                                                       // component="img"
+                                                       // height="196"
+                                                       // image={property['Front Image']}
+                                                       // alt={property.Address.title}
                                                        style={{
                                                             //   margin: '0 6px'
-                                                            borderRadius: 20,
+                                                            borderRadius: '20px 0 0',
                                                             filter: 'contrast(120%)',
-                                                            border: '0.1px solid #bdbdbd',
-
+                                                            // border: '1px solid #bdbdbd',
+                                                            minHeight: 197
                                                        }}
                                                   />
-                                                  <CardContent>
-                                                       <Typography gutterBottom variant="h5" component="div">
+                                                  <CardContent
+
+                                                       className={styles.card_content}
+                                                       style={{
+                                                            background: `linear-gradient(106deg, #fffffff9 0%, #ffffffdd 100%)`,
+                                                            minHeight: 114,
+
+                                                            'backdrop-filter': 'blur(12px)',
+                                                            '-webkit-backdrop-filter': 'blur(12px)'
+
+                                                       }}
+                                                  >
+                                                       <Typography gutterBottom variant="h5" component="div"
+                                                       className={styles.card_content_title}>
                                                             {property.Address.title}
                                                        </Typography>
-                                                       {/* <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                                                       {property.Address.description}
-                                                  </Typography> */}
-                                                       <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+
+                                                       <Typography variant="body2" sx={{ color: 'text.secondary' }} className={styles.card_content_text}>
                                                             City: {property.Address.city}
                                                        </Typography>
-                                                       <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                                                       <Typography variant="body2" sx={{ color: 'text.secondary' }} className={styles.card_content_text}>
                                                             Price per night: £{property.PricePerNight}
                                                        </Typography>
 

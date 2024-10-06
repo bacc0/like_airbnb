@@ -119,3 +119,22 @@
     background: #bababa;
 
 }
+
+
+.card_content:hover {
+    background: linear-gradient(106deg, #ffffffef 0%, #ffffffaa 100%) !important;
+
+    backdrop-filter: blur(1px) !important;
+    -webkit-backdrop-filter: blur(1px) !important;
+
+    /* Transitions for both background and backdrop-filter */
+    transition: background 2s ease, backdrop-filter 2s ease, -webkit-backdrop-filter 2s ease;
+}
+
+.card_content:hover .card_content_title {
+    color: #FF385C !important;
+}
+
+.card_content:hover .card_content_text {
+    color: #000000 !important;
+}
