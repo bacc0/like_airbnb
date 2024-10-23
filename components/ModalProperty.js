@@ -120,7 +120,7 @@ const ModalProperty = ({
             aria-describedby="modal-modal-description"
         >
             <Box sx={style}>
-                {/* {!showPaymentForm && <div> */}
+                {!showPaymentForm && <div>
                     <div
                         onClick={onClose}
                         style={{
@@ -153,6 +153,28 @@ const ModalProperty = ({
                         <span style={{ fontWeight: 600 }}> {property.Address.city}</span>
                     </p>
 
+
+                    <p>
+                        <span style={{ paddingRight: 7, color: "#FF385C" }}>
+                            Price per night:
+                        </span>
+
+                        <span style={{ fontWeight: 600 }}>  £{property.PricePerNight}</span>
+
+                        {lengthOfNights > 0 &&
+                            <>
+                                <span style={{ paddingRight: 7, paddingLeft: '1.5em', color: "#FF385C" }}>
+                                    Total Price:
+                                </span>
+                                <span style={{ fontWeight: 600, fontSize: 26 }}>
+                                    £{(property.PricePerNight * lengthOfNights).toFixed(2)}
+                                </span>
+                            </>}
+
+                    </p>
+
+
+
                     <div style={scrollableGalleryStyle}>
                         {imageUrls.map((url, index) => (
                             <img
@@ -164,7 +186,7 @@ const ModalProperty = ({
                             />
                         ))}
                     </div>
-                {/* </div>} */}
+                </div>}
                 {/* Show Book button initially */}
                 {!showPaymentForm && (
                     <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
@@ -192,7 +214,28 @@ const ModalProperty = ({
                         <div
                             style={{ padding: '20px 40px 40px' }}
                         >
-                            <h3>Card Payment</h3>
+                            <h1>Card Payment</h1>
+
+
+                            <p>
+                                <span style={{ paddingRight: 7, color: "#FF385C" }}>
+                                    Price per night:
+                                </span>
+
+                                <span style={{ fontWeight: 600 }}>  £{property.PricePerNight}</span>
+
+                                {lengthOfNights > 0 &&
+                                    <>
+                                        <span style={{ paddingRight: 7, paddingLeft: '1.5em', color: "#FF385C" }}>
+                                            Total Price:
+                                        </span>
+                                        <span style={{ fontWeight: 600, fontSize: 26 }}>
+                                            £{(property.PricePerNight * lengthOfNights).toFixed(2)}
+                                        </span>
+                                    </>}
+
+                            </p>
+
                             <TextField
                                 label="Card Number"
                                 variant="outlined"
