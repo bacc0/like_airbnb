@@ -215,8 +215,7 @@ const ModalProperty = ({
                             style={{ padding: '20px 40px 40px' }}
                         >
                             <h1>Card Payment</h1>
-
-
+//payment
                             <p>
                                 <span style={{ paddingRight: 7, color: "#FF385C" }}>
                                     Price per night:
