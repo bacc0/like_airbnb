@@ -47,6 +47,7 @@ const PropertySearchList = ({
                          };
                     });
                     setProperties(propertyList);
+                    // console.log(propertyList)
                })
                .catch((error) => {
                     console.error('Error fetching properties:', error);
@@ -60,9 +61,12 @@ const PropertySearchList = ({
           } else if (destination) {
                const filtered = properties.filter(
                     (property) =>
+                         // property.Address &&
+                         // property.Address.city &&
+                         // property.Address.city.toLowerCase() === destination.toLowerCase()
                          property.Address &&
-                         property.Address.city &&
-                         property.Address.city.toLowerCase() === destination.toLowerCase()
+                         property.Address.City &&
+                         property.Address.City.toLowerCase() === destination.toLowerCase()
                );
                setFilteredProperties(filtered);
           } else {
@@ -239,7 +243,7 @@ const PropertySearchList = ({
                                                        </Typography>
 
                                                        <Typography variant="body2" sx={{ color: 'text.secondary' }} className={styles.card_content_text}>
-                                                            City: {property.Address.city}
+                                                            City: {property.Address.City}
                                                        </Typography>
                                                        <Typography variant="body2" sx={{ color: 'text.secondary' }} className={styles.card_content_text}>
                                                             Price per night: £{property.PricePerNight}

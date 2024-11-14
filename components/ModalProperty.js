@@ -139,10 +139,10 @@ const ModalProperty = ({
                     >
                         <CloseIcon />
                     </div>
-                    <h2>{property.Address.title}</h2>
+                    <h2>{property.Address.Title}</h2>
                     <p>
                         <span style={{ paddingRight: 7, color: "#FF385C" }}> Description:</span>
-                        <span style={{ fontWeight: 600 }}>{property.Address.description}</span>
+                        <span style={{ fontWeight: 600 }}>{property.Address.Description}</span>
                     </p>
                     <p>
                         <span style={{ paddingRight: 7, color: "#FF385C" }}> Address:</span>
@@ -150,7 +150,7 @@ const ModalProperty = ({
                     </p>
                     <p>
                         <span style={{ paddingRight: 7, color: "#FF385C" }}> City:</span>
-                        <span style={{ fontWeight: 600 }}> {property.Address.city}</span>
+                        <span style={{ fontWeight: 600 }}> {property.Address.City}</span>
                     </p>
 
 
