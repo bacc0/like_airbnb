@@ -121,67 +121,67 @@ const PropertySearchList = ({
 
                     {!showAll && destination && filteredProperties.length === 0 ? (
                          <p
-                         style={{
-                              display: 'flex',
-                              justifyContent: 'center', // Centers horizontally
-                              alignItems: 'center',     // Centers vertically
-                              height: '50vh',          // Ensures it takes up the full viewport heigh
-                         }}
-                    >
-                         <div1
                               style={{
-                                   position: 'absolute',
-                                   top: 150,
-                                   fontSize: 22,
-
-                              }}
-                         >  No properties available.</div1>
-                         <span
-                              style={{
-                                   position: 'relative',
-                                   top: 20,
-                                   marginLeft: 20,
-
-                              }}
-                         >Please enter a valid destination or
-                              <div />
-                              <Button
-                                   style={{
-                                        position: 'relative',
-                                        top: 5,
-                                        fontSize: 16,
-                                        height: 60,
-                                        width: 340,
-                                        textDecoration: 'none',
-                                        padding: 12,
-                                        marginTop: 40,
-                                        marginLeft: -50,
-                                        borderRadius: 30,
-                                        color: '#FF385C',
-                                        
-                                        border: isHovered ? '0.1px solid #000000' :'0.1px solid #FF385C',
-
-                                        background: isHovered ? '#FFF9F9' : '#ffffff',
-                                        boxShadow: `0 0 ${isHovered ? 0 : 10}px #00000033`, 
-                                        
-                                        transition: 'background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease,', 
-                                   }}
-                                   href="#"
-                                   onClick={handleShowAll}
-                                   onMouseEnter={handleMouseEnter}
-                                   onMouseLeave={handleMouseLeave}
-                              >
-                                   click here to see all properties
-                              </Button>
-                         </span>
-                         <span
-                              style={{
-                                   position: 'relative',
-                                   top: 20,
+                                   display: 'flex',
+                                   justifyContent: 'center', // Centers horizontally
+                                   alignItems: 'center',     // Centers vertically
+                                   height: '50vh',          // Ensures it takes up the full viewport heigh
                               }}
                          >
-                         </span>
-                    </p>
+                              <div1
+                                   style={{
+                                        position: 'absolute',
+                                        top: 150,
+                                        fontSize: 22,
+
+                                   }}
+                              >  No properties available.</div1>
+                              <span
+                                   style={{
+                                        position: 'relative',
+                                        top: 20,
+                                        marginLeft: 20,
+
+                                   }}
+                              >Please enter a valid destination or
+                                   <div />
+                                   <Button
+                                        style={{
+                                             position: 'relative',
+                                             top: 5,
+                                             fontSize: 16,
+                                             height: 60,
+                                             width: 340,
+                                             textDecoration: 'none',
+                                             padding: 12,
+                                             marginTop: 40,
+                                             marginLeft: -50,
+                                             borderRadius: 30,
+                                             color: '#FF385C',
+
+                                             border: isHovered ? '0.1px solid #000000' : '0.1px solid #FF385C',
+
+                                             background: isHovered ? '#FFF9F9' : '#ffffff',
+                                             boxShadow: `0 0 ${isHovered ? 0 : 10}px #00000033`,
+
+                                             transition: 'background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease,',
+                                        }}
+                                        href="#"
+                                        onClick={handleShowAll}
+                                        onMouseEnter={handleMouseEnter}
+                                        onMouseLeave={handleMouseLeave}
+                                   >
+                                        click here to see all properties
+                                   </Button>
+                              </span>
+                              <span
+                                   style={{
+                                        position: 'relative',
+                                        top: 20,
+                                   }}
+                              >
+                              </span>
+                         </p>
                     ) : filteredProperties.length > 0 ? (
 
                          <motion.ul
@@ -239,7 +239,11 @@ const PropertySearchList = ({
                                                   >
                                                        <Typography gutterBottom variant="h5" component="div"
                                                             className={styles.card_content_title}>
-                                                            {property.Address.Title}
+                                                            {
+                                                                 property.Address.Title.length > 20
+                                                                      ? property.Address.Title.substring(0, 20) + ' ...'
+                                                                      : property.Address.Title
+                                                            }
                                                        </Typography>
 
                                                        <Typography variant="body2" sx={{ color: 'text.secondary' }} className={styles.card_content_text}>
@@ -295,13 +299,13 @@ const PropertySearchList = ({
                                              marginLeft: -50,
                                              borderRadius: 30,
                                              color: '#FF385C',
-                                             
-                                             border: isHovered ? '0.1px solid #000000' :'0.1px solid #FF385C',
+
+                                             border: isHovered ? '0.1px solid #000000' : '0.1px solid #FF385C',
 
                                              background: isHovered ? '#FFF9F9' : '#ffffff',
-                                             boxShadow: `0 0 ${isHovered ? 0 : 10}px #00000033`, 
-                                             
-                                             transition: 'background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease,', 
+                                             boxShadow: `0 0 ${isHovered ? 0 : 10}px #00000033`,
+
+                                             transition: 'background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease,',
                                         }}
                                         href="#"
                                         onClick={handleShowAll}
