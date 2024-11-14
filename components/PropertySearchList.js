@@ -239,7 +239,7 @@ const PropertySearchList = ({
                                                   >
                                                        <Typography gutterBottom variant="h5" component="div"
                                                             className={styles.card_content_title}>
-                                                            {property.Address.title}
+                                                            {property.Address.Title}
                                                        </Typography>
 
                                                        <Typography variant="body2" sx={{ color: 'text.secondary' }} className={styles.card_content_text}>
