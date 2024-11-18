@@ -12,6 +12,7 @@
     "@mui/material": "^6.1.1",
     "@reduxjs/toolkit": "^2.2.7",
     "@toolpad/core": "^0.7.0",
+    "animated-backgrounds": "^1.1.0",
     "clsx": "latest",
     "firebase": "^10.14.0",
     "framer-motion": "^11.8.0",
@@ -21,6 +22,7 @@
     "react-datepicker": "^7.4.0",
     "react-dom": "latest",
     "react-loading": "^2.0.3",
+    "react-loading-skeleton": "^3.5.0",
     "react-redux": "^9.1.2",
     "react-responsive-carousel": "^3.2.23"
   },

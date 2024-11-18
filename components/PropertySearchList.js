@@ -10,7 +10,9 @@ import Button from '@mui/material/Button';
 import BorderLinearProgress from './BorderLinearProgress'
 import styles from '../src/styles/index.module.css';
 
-
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+import { AnimatedBackground } from 'animated-backgrounds';
 
 const PropertySearchList = ({
      name,
@@ -165,6 +167,14 @@ const PropertySearchList = ({
                                              boxShadow: `0 0 ${isHovered ? 0 : 10}px #00000033`,
 
                                              transition: 'background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease,',
+                                             // border: '1px solid #fff',
+                                             // backgroundSize: '180%', 
+                                             // backgroundColor: '#F5F5F5',
+                                             // background: `linear-gradient(0deg, #E1E1E1 0%, #F5F5F5 100%)`,
+
+
+
+
                                         }}
                                         href="#"
                                         onClick={handleShowAll}
@@ -192,6 +202,7 @@ const PropertySearchList = ({
                               style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', padding: 0 }}>
                               {filteredProperties.map((property) => (
                                    <li key={property.id} style={{ listStyle: 'none', }}>
+                                       {
                                         <Card
                                              style={{
                                                   maxWidth: 310,
@@ -207,10 +218,15 @@ const PropertySearchList = ({
                                                   backgroundSize: 'cover',
                                                   // border: '1px solid #fff',
                                                   // backgroundSize: '180%', 
+                                                  // backgroundColor: '#F5F5F5',
+                                                  // background: `linear-gradient(0deg, #E1E1E1 0%, #F5F5F5 100%)`,
 
+                                                  backgroundColor: '#F5F5F5',
                                              }}
                                              onClick={() => handlePropertyClick(property)}
                                         >
+
+                                             {/* <Skeleton count={5} /> // Five-line loading skeleton */}
                                              <CardActionArea>
                                                   <CardMedia
                                                        // component="img"
@@ -225,6 +241,7 @@ const PropertySearchList = ({
                                                             minHeight: 197
                                                        }}
                                                   />
+
                                                   <CardContent
 
                                                        className={styles.card_content}
@@ -256,6 +273,7 @@ const PropertySearchList = ({
                                                   </CardContent>
                                              </CardActionArea>
                                         </Card>
+                                        }
                                    </li>
                               ))}
                          </motion.ul>
