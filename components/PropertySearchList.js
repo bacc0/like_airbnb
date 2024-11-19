@@ -13,6 +13,8 @@ import styles from '../src/styles/index.module.css';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { AnimatedBackground } from 'animated-backgrounds';
+import LazyLoad from 'react-lazyload';
+
 
 const PropertySearchList = ({
      name,
@@ -161,7 +163,7 @@ const PropertySearchList = ({
                                              borderRadius: 30,
                                              color: '#FF385C',
 
-                                             border: isHovered ? '0.1px solid #000000' : '0.1px solid #FF385C',
+                                             border: isHovered ? '0.1px solid #000000' : '0.1px solid ',
 
                                              background: isHovered ? '#FFF9F9' : '#ffffff',
                                              boxShadow: `0 0 ${isHovered ? 0 : 10}px #00000033`,
@@ -195,84 +197,100 @@ const PropertySearchList = ({
                     ) : filteredProperties.length > 0 ? (
 
                          <motion.ul
-                              initial={{ opacity: 0, translateY: -10, scale: 1.05 }}
+                              initial={{
+                                   opacity: 0,
+                                   translateY: filteredProperties.length > 12
+                                        ? 260
+                                        : -10,
+                                   scale: 1.05
+                              }}
                               animate={{ opacity: 1, translateY: 0, scale: 1 }}
-                              transition={{ duration: 0.6, delay: 0.6 }}
+                              transition={{
+                                   duration: 0.6,
+                                   delay: filteredProperties.length > 12
+                                        ? 0
+                                        : 1.6
+                              }}
 
                               style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', padding: 0 }}>
                               {filteredProperties.map((property) => (
                                    <li key={property.id} style={{ listStyle: 'none', }}>
-                                       {
-                                        <Card
-                                             style={{
-                                                  maxWidth: 310,
-                                                  maxHeight: 310,
-                                                  minWidth: 310,
-                                                  minHeight: 310,
-                                                  borderRadius: 20,
-                                                  boxShadow: '0 0 0',
-                                                  margin: '0 4px',
-                                                  backgroundImage: `url('${property['Front Image']}')`,
-                                                  backgroundRepeat: 'no-repeat',
-                                                  backgroundPosition: 'center center',
-                                                  backgroundSize: 'cover',
-                                                  // border: '1px solid #fff',
-                                                  // backgroundSize: '180%', 
-                                                  // backgroundColor: '#F5F5F5',
-                                                  // background: `linear-gradient(0deg, #E1E1E1 0%, #F5F5F5 100%)`,
-
-                                                  backgroundColor: '#F5F5F5',
-                                             }}
-                                             onClick={() => handlePropertyClick(property)}
-                                        >
-
-                                             {/* <Skeleton count={5} /> // Five-line loading skeleton */}
-                                             <CardActionArea>
-                                                  <CardMedia
-                                                       // component="img"
-                                                       // height="196"
-                                                       // image={property['Front Image']}
-                                                       // alt={property.Address.title}
+                                        {
+                                             <LazyLoad height={310} offset={100}>
+                                                  <Card
                                                        style={{
-                                                            //   margin: '0 6px'
-                                                            borderRadius: '20px 0 0',
-                                                            filter: 'contrast(120%)',
-                                                            // border: '1px solid #bdbdbd',
-                                                            minHeight: 197
-                                                       }}
-                                                  />
-
-                                                  <CardContent
-
-                                                       className={styles.card_content}
-                                                       style={{
-                                                            background: `linear-gradient(106deg, #fffffff9 0%, #ffffffdd 100%)`,
-                                                            minHeight: 114,
-
-                                                            'backdrop-filter': 'blur(12px)',
-                                                            '-webkit-backdrop-filter': 'blur(12px)'
+                                                            maxWidth: 310,
+                                                            maxHeight: 310,
+                                                            minWidth: 310,
+                                                            minHeight: 310,
+                                                            borderRadius: 20,
+                                                            boxShadow: '0 0 0',
+                                                            margin: '0 4px',
+                                                            backgroundImage: `url('${property['Front Image']}')`,
+                                                            backgroundRepeat: 'no-repeat',
+                                                            backgroundPosition: 'center center',
+                                                            // backgroundSize: 'cover',
+                                                            backgroundSize: '220%',
+                                                            backgroundColor: '#F5F5F5',
+                                                            filter: 'opacity(200%)',
+                                                            filter:' saturate(111%)',
+                                                            backgroundPosition: 'center -110px'
 
                                                        }}
+                                                       onClick={() => handlePropertyClick(property)}
                                                   >
-                                                       <Typography gutterBottom variant="h5" component="div"
-                                                            className={styles.card_content_title}>
-                                                            {
-                                                                 property.Address.Title.length > 20
-                                                                      ? property.Address.Title.substring(0, 20) + ' ...'
-                                                                      : property.Address.Title
-                                                            }
-                                                       </Typography>
 
-                                                       <Typography variant="body2" sx={{ color: 'text.secondary' }} className={styles.card_content_text}>
-                                                            City: {property.Address.City}
-                                                       </Typography>
-                                                       <Typography variant="body2" sx={{ color: 'text.secondary' }} className={styles.card_content_text}>
-                                                            Price per night: £{property.PricePerNight}
-                                                       </Typography>
+                                                       {/* <Skeleton count={5} /> // Five-line loading skeleton */}
+                                                       <CardActionArea>
+                                                            <CardMedia
+                                                                 // component="img"
+                                                                 // height="196"
+                                                                 // image={property['Front Image']}
+                                                                 // alt={property.Address.title}
+                                                                 style={{
+                                                                      //   margin: '0 6px'
+                                                                      borderRadius: '20px 0 0',
+                                                                      filter: 'contrast(120%)',
+                                                                      // border: '1px solid #bdbdbd',
+                                                                      minHeight: 197,
+                                                                      backgroundImage: `url('${property['Front Image']}')`,
 
-                                                  </CardContent>
-                                             </CardActionArea>
-                                        </Card>
+                                                                 }}
+                                                            />
+
+                                                            <CardContent
+
+                                                                 className={styles.card_content}
+                                                                 style={{
+                                                                      background: `linear-gradient(106deg, #fffffff9 0%, #ffffffbb 100%)`,
+                                                                      minHeight: 114,
+
+                                                                      'backdrop-filter': 'blur(12px)',
+                                                                      '-webkit-backdrop-filter': 'blur(12px)'
+
+                                                                 }}
+                                                            >
+                                                                 <Typography gutterBottom variant="h5" component="div"
+                                                                      className={styles.card_content_title}>
+                                                                      {
+                                                                           property.Address.Title.length > 20
+                                                                                ? property.Address.Title.substring(0, 20) + ' ...'
+                                                                                : property.Address.Title
+                                                                      }
+                                                                 </Typography>
+
+                                                                 <Typography variant="body2" sx={{ color: 'text.secondary' }} className={styles.card_content_text}>
+                                                                      City: {property.Address.City}
+                                                                 </Typography>
+                                                                 <Typography variant="body2" sx={{ color: 'text.secondary' }} className={styles.card_content_text}>
+                                                                      Price per night: £{property.PricePerNight}
+                                                                 </Typography>
+
+                                                            </CardContent>
+                                                       </CardActionArea>
+                                                  </Card>
+                                             </LazyLoad>
+
                                         }
                                    </li>
                               ))}
