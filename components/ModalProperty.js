@@ -239,7 +239,15 @@ const ModalProperty = ({
 
 
                             <TextField
-                                label="Card Number"
+                            label={
+                                <span>
+                                    <span style={{ fontSize: '1rem', fontWeight: 'bold' }}>Card Number</span>
+                                    <span style={{ fontSize: '0.7rem', marginLeft: '4px', color: 'grey' }}>
+                                    16 digits
+                                    </span>
+                                </span>
+                            }
+                                // label="Card Number 16 digits"
                                 variant="outlined"
                                 fullWidth
                                 value={cardNumber}
@@ -268,7 +276,16 @@ const ModalProperty = ({
 
 
                             <TextField
-                                label="Expiry Date MM/YY"
+
+                                label={
+                                    <span>
+                                        <span style={{ fontSize: '1rem', fontWeight: 'bold' }}>Expiry Date</span>
+                                        <span style={{ fontSize: '0.7rem', marginLeft: '4px', color: 'grey' }}>
+                                            MM/YY
+                                        </span>
+                                    </span>
+                                }
+                                // label="Expiry Date MM/YY"
                                 variant="outlined"
                                 fullWidth
                                 value={expiryDate}
@@ -326,7 +343,15 @@ const ModalProperty = ({
 
 
                             <TextField
-                                label="CVV"
+                                label={
+                                    <span>
+                                        <span style={{ fontSize: '1rem', fontWeight: 'bold' }}>CVV</span>
+                                        <span style={{ fontSize: '0.7rem', marginLeft: '4px', color: 'grey' }}>
+                                            3-4 digits
+                                        </span>
+                                    </span>
+                                }
+                                // label="CVV (3-4 digits)"
                                 variant="outlined"
                                 fullWidth
                                 value={cvv}
