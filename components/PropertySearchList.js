@@ -140,7 +140,7 @@ const PropertySearchList = ({
 
                                    }}
                               >  No properties available.</div1>
-                              <span
+                              {/* <span
                                    style={{
                                         position: 'relative',
                                         top: 20,
@@ -185,7 +185,7 @@ const PropertySearchList = ({
                                    >
                                         click here to see all properties
                                    </Button>
-                              </span>
+                              </span> */}
                               <span
                                    style={{
                                         position: 'relative',
@@ -313,7 +313,7 @@ const PropertySearchList = ({
 
                                    }}
                               >  No properties available.</div1>
-                              <span
+                              {/* <span
                                    style={{
                                         position: 'relative',
                                         top: 20,
@@ -350,7 +350,7 @@ const PropertySearchList = ({
                                    >
                                         click here to see all properties
                                    </Button>
-                              </span>
+                              </span> */}
                               <span
                                    style={{
                                         position: 'relative',
