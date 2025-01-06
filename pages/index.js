@@ -25,7 +25,8 @@ import ModalLogin from '../components/ModalLogin';
 import ModalUserBookings from '../components/ModalUserBookings';
 import ModalOwnerBookings from '../components/ModalOwnerBookings';
 
-
+import Fab from '@mui/material/Fab';
+import DownloadIcon from '@mui/icons-material/Download';
 
 export default function Index() {
     const [isLogin, setIsLogin] = useState(false);
@@ -128,14 +129,59 @@ export default function Index() {
         setIsHovered_Login(false);
     };
 
+    const handle_download = () => {
+        // alert('handle_download');
+        window.open('https://console.firebase.google.com/u/0/?_gl=1*150g4tp*_ga*ODM4ODY4MjMwLjE3Mjc4OTcwMDY.*_ga_CW55HF8NVT*MTczNjE5MjQzMS40MS4wLjE3MzYxOTI0MzEuNjAuMC4w', '_blank');
+    };
+
+
     return (
         <div
             style={{
                 backgroundSize: 'cover',
-                minHeight: 480
+                minHeight: 480,
+                fontSize: 12,
+                padding: 6,
+            
+
             }}
         >
-            {/* {BorderLinearProgress_Visible && <BorderLinearProgress />} */}
+            <div
+                style={{
+                    position: 'fixed',
+                    bottom: 50,
+                    right: 50,
+                    zIndex: 100,
+                    fontWeight: 600,
+                    textShadow: `
+          
+              
+        0px 0px 5px rgba(0, 0, 0, 0.3),
+        1px 1px 5px rgba(0, 0, 0, 0.3),
+        -1px 1px 5px rgba(0, 0, 0, 0.3),
+        1px -1px 5px rgba(0, 0, 0, 0.3),
+        -1px -1px 5px rgba(0, 0, 0, 0.3)
+                  
+                `,
+              
+                color: '#ffffff'
+                }}
+            >
+                download the app 
+
+                 <Fab color="secondary" aria-label="edit"
+                    style={{ marginLeft: 6, background: '#ffffff', width: 60, height: 60 }}
+                >
+
+                    <DownloadIcon
+                        onClick={handle_download}
+                        style={{  color: '#FF385C' , fontSize: 26 }}
+                    />
+                </Fab>
+            </div>
+            {/* {BorderLi
+            
+            nearProgress_Visible && <BorderLinearProgress />} */}
 
             <Box sx={{ flexGrow: 1 }}>
                 <AppBar style={{
@@ -203,7 +249,7 @@ export default function Index() {
                                     style={{
                                         boxShadow: `0 0 ${isHovered_My_bookings ? 0 : 10}px #CCCCCC`,
                                         border: `0.3px solid ${isHovered_My_bookings ? '#000000' : '#FF385C'}`,
-                                        background: isHovered_My_bookings ?'#EFEFEF' : '#fff',
+                                        background: isHovered_My_bookings ? '#EFEFEF' : '#fff',
 
                                         transition: 'box-shadow 0.3s ease, border 0.3s ease, background 0.3s ease',
                                     }}
