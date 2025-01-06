@@ -149,18 +149,18 @@ export default function Index() {
             <div
                 style={{
                     position: 'fixed',
-                    bottom: 50,
-                    right: 50,
+                    bottom: 46,
+                    right: 46,
                     zIndex: 100,
                     fontWeight: 600,
                     textShadow: `
           
               
-        0px 0px 5px rgba(0, 0, 0, 0.3),
-        1px 1px 5px rgba(0, 0, 0, 0.3),
-        -1px 1px 5px rgba(0, 0, 0, 0.3),
-        1px -1px 5px rgba(0, 0, 0, 0.3),
-        -1px -1px 5px rgba(0, 0, 0, 0.3)
+        0px 0px 5px rgba(0, 0, 0, 0.2),
+        1px 1px 5px rgba(0, 0, 0, 0.2),
+        -1px 1px 5px rgba(0, 0, 0, 0.2),
+        1px -1px 5px rgba(0, 0, 0, 0.2),
+        -1px -1px 5px rgba(0, 0, 0, 0.2)
                   
                 `,
               
@@ -170,7 +170,7 @@ export default function Index() {
                 download the app 
 
                  <Fab color="secondary" aria-label="edit"
-                    style={{ marginLeft: 6, background: '#ffffff', width: 60, height: 60 }}
+                    style={{ marginLeft: 10, background: '#ffffff', width: 60, height: 60 }}
                 >
 
                     <DownloadIcon
