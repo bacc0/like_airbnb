@@ -131,10 +131,10 @@ export default function Index() {
 
     const handle_download = () => {
         // alert('handle_download');
-        window.open('https://console.firebase.google.com/u/0/?_gl=1*150g4tp*_ga*ODM4ODY4MjMwLjE3Mjc4OTcwMDY.*_ga_CW55HF8NVT*MTczNjE5MjQzMS40MS4wLjE3MzYxOTI0MzEuNjAuMC4w', '_blank');
+        window.open('https://storage.googleapis.com/airbnb-d4964.appspot.com/AirBnB%20Installer.exe', '_blank');
     };
 
-
+    // download link
     return (
         <div
             style={{
@@ -142,7 +142,7 @@ export default function Index() {
                 minHeight: 480,
                 fontSize: 12,
                 padding: 6,
-            
+
 
             }}
         >
@@ -163,19 +163,19 @@ export default function Index() {
         -1px -1px 5px rgba(0, 0, 0, 0.2)
                   
                 `,
-              
-                color: '#ffffff'
+
+                    color: '#ffffff'
                 }}
             >
-                download the app 
+                download the app
 
-                 <Fab color="secondary" aria-label="edit"
+                <Fab color="secondary" aria-label="edit"
                     style={{ marginLeft: 10, background: '#ffffff', width: 60, height: 60 }}
                 >
 
                     <DownloadIcon
                         onClick={handle_download}
-                        style={{  color: '#FF385C' , fontSize: 26 }}
+                        style={{ color: '#FF385C', fontSize: 26 }}
                     />
                 </Fab>
             </div>
